@@ -38,6 +38,7 @@ class AddViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Handles selection for recipe type
     @IBAction func handleTypeSelection(_ sender: UIButton) {
         type_click()
     }
@@ -79,12 +80,12 @@ class AddViewController: UIViewController {
             recipe.type = cat
             print(cat)
         }
-        if let serving = Int16(serving_size.text!) {
-            recipe.servings = serving
+        if let serving = Double(serving_size.text!) {
+            recipe.servings = Int16(serving)
             print(serving)
         }
-        if let prep = Int16(prep_time.text!) {
-            recipe.prep = prep
+        if let prep = Double(prep_time.text!) {
+            recipe.prep = Int16(prep)
             print(prep)
         }
         
