@@ -68,10 +68,7 @@ class AddViewController: UIViewController {
     }
     
     
-    // BUG: Unwrapping prep_time.text from Stepper object.
-    // Lines 83 && 87 --> Using stepper object to assign text to serving_size && prep_time
-    // cause errors when unwrapping --> 'found nil while unwrapping an Optional value ..'
-    // RETESTING
+    // fixed bug owo
     @IBAction func saveRecipe(_ sender: Any) {
         let recipe = Recipe(context: PersistenceService.context)
         if let name = recipe_name.text {
@@ -82,12 +79,12 @@ class AddViewController: UIViewController {
             recipe.type = cat
             print(cat)
         }
-        if let serving = serving_size.text {
-            recipe.servings = Int16(serving)!
+        if let serving = Int16(serving_size.text!) {
+            recipe.servings = serving
             print(serving)
         }
-        if let prep = prep_time.text {
-            recipe.prep = Int16(prep)!
+        if let prep = Int16(prep_time.text!) {
+            recipe.prep = prep
             print(prep)
         }
         
