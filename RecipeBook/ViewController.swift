@@ -12,7 +12,7 @@ import CoreData
 /**
     Recipe tab ViewController.
  */
-class RecipeViewController: UIViewController {
+class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
