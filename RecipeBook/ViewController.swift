@@ -38,6 +38,8 @@ class ViewController: UIViewController {
         } catch {
             print("Could not fetch")
         }
+        
+        print("testing 123")
     }
 
 }
