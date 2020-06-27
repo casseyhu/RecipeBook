@@ -10,6 +10,7 @@ import UIKit
 
 /**
     Add recipe ViewController. This class controls the events that happen when the user presses the add (+) button in the Recipes tab.
+    Adds new recipe to database.
  */
 
 class AddViewController: UIViewController {
