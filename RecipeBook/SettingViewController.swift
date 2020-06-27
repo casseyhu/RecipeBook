@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Settings tab ViewController. This class sorts data of the recipes according to user input. 
+ */
 class SettingViewController: UIViewController {
 
     override func viewDidLoad() {

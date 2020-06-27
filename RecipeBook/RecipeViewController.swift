@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+/**
+    Recipe tab ViewController.
+ */
+class RecipeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,7 +59,7 @@ extension ViewController: UITableViewDelegate {
 }
 
 /*
- Table View Data Source to display tasks
+ Table View Data Source to display recipes
  */
 extension ViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

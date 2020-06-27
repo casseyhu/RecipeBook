@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Converter tab ViewController. 
+ */
 class ConverterViewController: UIViewController {
 
     override func viewDidLoad() {

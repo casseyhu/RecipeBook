@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+    Add recipe ViewController. This class controls the events that happen when the user presses the add (+) button in the Recipes tab.
+ */
+
 class AddViewController: UIViewController {
 
     
@@ -63,7 +67,7 @@ class AddViewController: UIViewController {
     }
     
     
-    
+    // BUG: Unwrapping prep_time.text from Stepper object.
     @IBAction func saveRecipe(_ sender: Any) {
         let recipe = Recipe(context: PersistenceService.context)
         if let name = recipe_name.text {
