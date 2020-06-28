@@ -21,6 +21,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var serving_size: UITextField!
     @IBOutlet weak var prep_time: UITextField!
     @IBOutlet weak var titleTopbar: UINavigationItem!
+    @IBOutlet weak var ingredient_name: UITextField!
+    @IBOutlet weak var ingredient_qty: UITextField!
+  
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var typeButtons: [UIButton]!
     @IBOutlet weak var typeButton: UIButton!
@@ -35,13 +41,16 @@ class AddViewController: UIViewController {
 
     // Class var to hold a reference to a recipe that can be clicked in the main recipe tab bar.
     var currentRecipe: Recipe?
-    
+    var ingredients = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = UIColor.black
+        tableView.tableFooterView = footer
+        tableView.backgroundColor = UIColor.clear
         
-        // If the current recipe != nil, that means it was set in ViewController by a recipe cell being clicked. Load this information into the fields to display.
+
         if currentRecipe != nil {
             titleTopbar.title = "Edit Recipe"
             recipe_name.text = currentRecipe?.name
@@ -54,8 +63,55 @@ class AddViewController: UIViewController {
             typeButton.setTitle(currentRecipe!.type, for: .normal)
             // COME BACK TO SETTING INGREDIENTS ONCE IMPLEMENTED
         }
+    }
+    
+    @IBAction func addIngredient(_ sender: Any) {
+        //check if any are null
+        print("Adding ingredient")
+        var validIngredients = checkIngredientInput()
+        if validIngredients {
+            ingredients.append(ingredient_name.text! + ingredient_qty.text!)
+            tableView.reloadData()
+        }
+    }
+    
+    func checkIngredientInput() -> Bool {
+        var valid:Bool = true
+        if ingredient_name.text == "" {
+            errorShake(textField: ingredient_name)
+            ingredient_name.layer.borderColor = UIColor.red.cgColor
+            ingredient_name.layer.borderWidth = 1.0
+            valid = false
+        }
+        else {
+            ingredient_name.layer.borderColor = UIColor.black.cgColor
+            ingredient_name.layer.borderWidth = 0
+        }
+        if ingredient_qty.text == "" {
+            ingredient_qty.layer.borderColor = UIColor.red.cgColor
+            ingredient_qty.layer.borderWidth = 1.0
+            errorShake(textField: ingredient_qty)
+            valid = false
+        }
+        else {
+            ingredient_qty.layer.borderColor = UIColor.black.cgColor
+            ingredient_qty.layer.borderWidth = 0
+        }
+        return valid
         
     }
+    
+    func errorShake(textField: UITextField){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.08
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 8, y: textField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 8, y: textField.center.y))
+        textField.layer.add(animation, forKey: "position")
+    }
+    
+    
     
     // Handles selection for recipe type
     @IBAction func handleTypeSelection(_ sender: UIButton) {
@@ -138,4 +194,30 @@ class AddViewController: UIViewController {
     }
     
     
+}
+
+
+extension AddViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ingredients.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
+        
+        cell.textLabel?.text = ingredients[indexPath.row]
+        //cell.detailTextLabel?.text = "50x"
+        
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

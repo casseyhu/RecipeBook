@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-MJ-QCX">
-                                <rect key="frame" x="25" y="98" width="364" height="173"/>
+                                <rect key="frame" x="25" y="103" width="364" height="173"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0co-v6-Twd" userLabel="recipe">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
@@ -323,28 +323,28 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kh-fK-AZu">
-                                <rect key="frame" x="25" y="281" width="122.5" height="17"/>
+                                <rect key="frame" x="25" y="286" width="122.5" height="17"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddo-uq-BBR">
-                                <rect key="frame" x="0.0" y="351" width="414" height="462"/>
+                                <rect key="frame" x="0.0" y="359" width="414" height="454"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="p1Z-4F-DUK">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" rowHeight="60" id="p1Z-4F-DUK">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p1Z-4F-DUK" id="eIP-yY-hnU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-QN-TkY">
-                                <rect key="frame" x="20" y="309" width="220" height="34"/>
+                                <rect key="frame" x="20" y="314" width="220" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="wSl-1b-JRn"/>
                                 </constraints>
@@ -352,7 +352,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-zr-Pnf">
-                                <rect key="frame" x="248" y="309" width="110" height="34"/>
+                                <rect key="frame" x="248" y="314" width="110" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="WOK-pC-I6u"/>
                                 </constraints>
@@ -360,8 +360,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-fH-Uvy">
-                                <rect key="frame" x="369" y="316" width="25" height="18"/>
+                                <rect key="frame" x="369" y="321" width="25" height="18"/>
                                 <state key="normal" backgroundImage="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addIngredient:" destination="pc1-l1-Wzu" eventType="touchUpInside" id="osF-Fb-DeB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -375,7 +378,7 @@
                             <constraint firstItem="9kh-fK-AZu" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="10" id="Ml6-RI-vYS"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="9kh-fK-AZu" secondAttribute="trailing" constant="266.5" id="P2g-Lr-qbr"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" id="TuA-cJ-Ll1"/>
-                            <constraint firstItem="w2j-MJ-QCX" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" constant="10" id="WBB-PP-M6C"/>
+                            <constraint firstItem="w2j-MJ-QCX" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" constant="15" id="WBB-PP-M6C"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" id="Y4j-vT-Atw"/>
                             <constraint firstItem="rSZ-zr-Pnf" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="38" id="bNv-ee-41C"/>
                             <constraint firstItem="9kh-fK-AZu" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="25" id="c2o-Wi-Yo7"/>
@@ -393,9 +396,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ingredient_name" destination="Ft7-QN-TkY" id="UzU-CB-agh"/>
+                        <outlet property="ingredient_qty" destination="rSZ-zr-Pnf" id="seT-uS-rAU"/>
                         <outlet property="prep_time" destination="ZIX-EV-VjI" id="Q43-Q3-Lj7"/>
                         <outlet property="recipe_name" destination="Mhj-az-GlX" id="QO0-9M-CMI"/>
                         <outlet property="serving_size" destination="mes-Qa-VGv" id="Qii-yw-NIt"/>
+                        <outlet property="tableView" destination="ddo-uq-BBR" id="i73-fs-yiN"/>
                         <outlet property="titleTopbar" destination="6Sh-U9-XWI" id="udG-Eb-Sf3"/>
                         <outlet property="typeButton" destination="61V-Nf-A4X" id="W1G-Rl-4JK"/>
                         <outletCollection property="typeButtons" destination="fwi-7P-KIC" collectionClass="NSMutableArray" id="p7o-Jw-3FT"/>
@@ -525,7 +531,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruits" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-jS-B4L">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-jS-B4L">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="L4x-a4-VbX">
@@ -680,7 +686,7 @@
         <segue reference="UTF-Us-dDN"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="fruits" width="237" height="421"/>
+        <image name="macaron" width="317" height="475.5"/>
         <image name="main" width="1745.5" height="2618"/>
         <image name="marble" width="400" height="614"/>
         <image name="new_recipe" width="750" height="938"/>

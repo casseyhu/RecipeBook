@@ -46,17 +46,12 @@ class ViewController: UIViewController {
     @IBAction func editList(_ sender: UIBarButtonItem) {
         if(self.tableView.isEditing == true) {
             self.tableView.isEditing = false
-            sender.title = "Done"
+            sender.title = "Edit"
         } else {
             self.tableView.isEditing = true
-            sender.title = "Edit"
+            sender.title = "Done"
         }
     }
-    
-    
-    // MARK: - Navigation
-    
-
 }
 
 
