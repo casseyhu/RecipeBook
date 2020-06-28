@@ -90,42 +90,52 @@ class AddViewController: UIViewController {
     
     //  BUG: repeat save, needs to update
     @IBAction func saveRecipe(_ sender: Any) {
-        let recipe = Recipe(context: PersistenceService.context)
-        if let name = recipe_name.text {
-            recipe.name = name
-            print(name)
+        var name:String!, type:String!
+        var servings:Int16!, prep:Int16!
+        
+        if let n = recipe_name.text {
+            name = n
         }
         if let cat = typeButton.titleLabel?.text {
-            recipe.type = cat
-            print(cat)
+            type = cat
         }
         if let serving = Double(serving_size.text!) {
-            recipe.servings = Int16(serving)
-            print(serving)
+            servings = Int16(serving)
         }
-        if let prep = Double(prep_time.text!) {
-            recipe.prep = Int16(prep)
-            print(prep)
+        if let p = Double(prep_time.text!) {
+            prep = Int16(p)
         }
         
-        PersistenceService.saveContext()
+        if !fetchEvent(name: name, type: type, ingr: "", servings: servings, prep: prep) {
+            let recipe = Recipe(context: PersistenceService.context)
+            recipe.name = name
+            recipe.type = type
+            recipe.servings = servings
+            recipe.prep = prep
+            PersistenceService.saveContext()
+        }
         let _ = navigationController?.popViewController(animated: true)
     }
     
-    func fetchEvent(recipeName:String, recipe:Recipe) {
+    func fetchEvent(name:String, type:String, ingr:String, servings:Int16, prep:Int16) -> Bool {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
-        fetchRequest.predicate = NSPredicate(format: "name = %@", recipeName)
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
         do {
             let results = try PersistenceService.context.fetch(fetchRequest)
             if results.count != 0 {
                 let managedObject = results[0] as! Recipe
-//                (managedObject as AnyObject).setValue(recipe.name, forKey: "name")
-                print(managedObject.name!)
-                try PersistenceService.context.save()
+                managedObject.setValue(name, forKey: "name")
+                managedObject.setValue(type, forKey: "type")
+                managedObject.setValue(servings, forKey: "servings")
+                managedObject.setValue(prep, forKey: "prep")
+                managedObject.setValue(ingr, forKey: "ingredients")
+                print(managedObject.name! + "---")
+                return true
             }
         } catch {
             print("bad")
         }
+        return false
     }
     
     
