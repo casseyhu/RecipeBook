@@ -61,16 +61,27 @@ class AddViewController: UIViewController {
                 prep_time.text = String(prep)
             }
             typeButton.setTitle(currentRecipe!.type, for: .normal)
-            // COME BACK TO SETTING INGREDIENTS ONCE IMPLEMENTED
-            loadIngredients(ingredients: (currentRecipe?.ingredients)!)
+            loadIngredients(ingredString: (currentRecipe?.ingredients)!)
             
         }
     }
     
-    func loadIngredients(ingredients: String){
+    // Formats the ingredients from X`Y`` into the 'ingredients' class var to load into view.
+    func loadIngredients(ingredString: String){
+        let dummyIngred = ingredString.components(separatedBy: "``")
+        for elem in dummyIngred {
+            if(elem == "") {
+                // This accounts for the last element.
+                // Ex: Egg`1x``Milk`50mL``
+                // -> [Egg`1x, Milk`50mL, ] <- Has extra elem.
+                break
+            }
+            ingredients.append(elem)
+        }
         
     }
     
+    // '+' Button listener in adding a new ingredient to a recipe.
     @IBAction func addIngredient(_ sender: Any) {
         //check if any are null
         print("Adding ingredient")
@@ -83,6 +94,7 @@ class AddViewController: UIViewController {
         }
     }
     
+    // Checks if there's a provided ingredient name and quantity. If either is missing, shake the UITextFields to indicate a missing element.
     func checkIngredientInput() -> Bool {
         var valid:Bool = true
         if ingredient_name.text == "" {
@@ -109,6 +121,7 @@ class AddViewController: UIViewController {
         
     }
     
+    // Shake animation on a UITextField and highlights the borders red.
     func errorShake(textField: UITextField){
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.08
@@ -201,7 +214,9 @@ class AddViewController: UIViewController {
         return false
     }
     
+    // Compresses the ingredients class array into a string with '``' as the delimiter. 
     func compress_ingredient() -> String {
+        print(ingredients.count)
         var ingredients_str = ""
         for ingred in ingredients {
             ingredients_str += ingred + "``"
