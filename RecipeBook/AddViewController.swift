@@ -214,7 +214,7 @@ class AddViewController: UIViewController {
         return false
     }
     
-    // Compresses the ingredients class array into a string with '``' as the delimiter. 
+    // Compresses the ingredients class array into a string with '``' as the delimiter.
     func compress_ingredient() -> String {
         print(ingredients.count)
         var ingredients_str = ""
@@ -248,6 +248,20 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = ingredient[0]
         cell.detailTextLabel?.text = ingredient[1]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let context = PersistenceService.context
+            //context.delete(ingredients[indexPath.row])
+            ingredients.remove(at: indexPath.row)
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context: Deleting ingredient")
+            }
+            tableView.reloadData()
+        }
     }
     
     
