@@ -62,7 +62,13 @@ class AddViewController: UIViewController {
             }
             typeButton.setTitle(currentRecipe!.type, for: .normal)
             // COME BACK TO SETTING INGREDIENTS ONCE IMPLEMENTED
+            loadIngredients(ingredients: (currentRecipe?.ingredients)!)
+            
         }
+    }
+    
+    func loadIngredients(ingredients: String){
+        
     }
     
     @IBAction func addIngredient(_ sender: Any) {
@@ -70,7 +76,7 @@ class AddViewController: UIViewController {
         print("Adding ingredient")
         let validIngredients = checkIngredientInput()
         if validIngredients {
-            ingredients.append(ingredient_name.text! + "-" + ingredient_qty.text!)
+            ingredients.append(ingredient_name.text! + "`" + ingredient_qty.text!)
             tableView.reloadData()
             ingredient_name.text = ""
             ingredient_qty.text = ""
@@ -162,6 +168,7 @@ class AddViewController: UIViewController {
             prep = Int16(p)
         }
         let ingred = compress_ingredient()
+        print("Saving recipe- ingredints: \(ingred)")
         if !fetchEvent(name: name, type: type, ingr: ingred, servings: servings, prep: prep) {
             let recipe = Recipe(context: PersistenceService.context)
             recipe.name = name
@@ -197,7 +204,7 @@ class AddViewController: UIViewController {
     func compress_ingredient() -> String {
         var ingredients_str = ""
         for ingred in ingredients {
-            ingredients_str += ingred + "--"
+            ingredients_str += ingred + "``"
         }
         print(ingredients_str)
         return ingredients_str
@@ -222,7 +229,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
-        let ingredient = ingredients[indexPath.row].components(separatedBy: "-")
+        let ingredient = ingredients[indexPath.row].components(separatedBy: "`")
         cell.textLabel?.text = ingredient[0]
         cell.detailTextLabel?.text = ingredient[1]
         return cell
