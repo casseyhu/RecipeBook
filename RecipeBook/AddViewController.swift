@@ -51,6 +51,7 @@ class AddViewController: UIViewController {
             if let prep = currentRecipe?.prep {
                 prep_time.text = String(prep)
             }
+            typeButton.setTitle(currentRecipe!.type, for: .normal)
             // COME BACK TO SETTING INGREDIENTS ONCE IMPLEMENTED
         }
         
