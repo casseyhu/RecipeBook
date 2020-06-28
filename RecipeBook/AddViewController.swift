@@ -21,10 +21,10 @@ class AddViewController: UIViewController {
     @IBOutlet weak var serving_size: UITextField!
     @IBOutlet weak var prep_time: UITextField!
     @IBOutlet weak var titleTopbar: UINavigationItem!
+    
     @IBOutlet weak var ingredient_name: UITextField!
     @IBOutlet weak var ingredient_qty: UITextField!
   
-    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,15 +42,15 @@ class AddViewController: UIViewController {
     // Class var to hold a reference to a recipe that can be clicked in the main recipe tab bar.
     var currentRecipe: Recipe?
     var ingredients = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         let footer = UIView(frame: .zero)
         footer.backgroundColor = UIColor.black
         tableView.tableFooterView = footer
-        tableView.backgroundColor = UIColor.clear
         
-
         if currentRecipe != nil {
             titleTopbar.title = "Edit Recipe"
             recipe_name.text = currentRecipe?.name
@@ -68,10 +68,12 @@ class AddViewController: UIViewController {
     @IBAction func addIngredient(_ sender: Any) {
         //check if any are null
         print("Adding ingredient")
-        var validIngredients = checkIngredientInput()
+        let validIngredients = checkIngredientInput()
         if validIngredients {
-            ingredients.append(ingredient_name.text! + ingredient_qty.text!)
+            ingredients.append(ingredient_name.text! + "-" + ingredient_qty.text!)
             tableView.reloadData()
+            ingredient_name.text = ""
+            ingredient_qty.text = ""
         }
     }
     
@@ -111,8 +113,6 @@ class AddViewController: UIViewController {
         textField.layer.add(animation, forKey: "position")
     }
     
-    
-    
     // Handles selection for recipe type
     @IBAction func handleTypeSelection(_ sender: UIButton) {
         type_click()
@@ -135,16 +135,16 @@ class AddViewController: UIViewController {
         type_click()
     }
     
-    @IBAction func serving_stepper(_ sender: UIStepper) {
-        serving_size.text = String(sender.value)
+    @IBAction func clickedStepper(_ sender: UIStepper) {
+        if sender.restorationIdentifier! == "serving_stepper" {
+            serving_size.text = String(sender.value)
+        }
+        else {
+            prep_time.text = String(sender.value)
+        }
     }
     
-    @IBAction func prep_stepper(_ sender: UIStepper) {
-        prep_time.text = String(sender.value)
-    }
-    
-    
-    //  BUG: repeat save, needs to update
+    // Saves a recipe into database or update if recipe name already exists
     @IBAction func saveRecipe(_ sender: Any) {
         var name:String!, type:String!
         var servings:Int16!, prep:Int16!
@@ -161,13 +161,14 @@ class AddViewController: UIViewController {
         if let p = Double(prep_time.text!) {
             prep = Int16(p)
         }
-        
-        if !fetchEvent(name: name, type: type, ingr: "", servings: servings, prep: prep) {
+        let ingred = compress_ingredient()
+        if !fetchEvent(name: name, type: type, ingr: ingred, servings: servings, prep: prep) {
             let recipe = Recipe(context: PersistenceService.context)
             recipe.name = name
             recipe.type = type
             recipe.servings = servings
             recipe.prep = prep
+            recipe.ingredients = ingred
             PersistenceService.saveContext()
         }
         let _ = navigationController?.popViewController(animated: true)
@@ -188,16 +189,29 @@ class AddViewController: UIViewController {
                 return true
             }
         } catch {
-            print("bad")
+            return false
         }
         return false
+    }
+    
+    func compress_ingredient() -> String {
+        var ingredients_str = ""
+        for ingred in ingredients {
+            ingredients_str += ingred + "--"
+        }
+        print(ingredients_str)
+        return ingredients_str
     }
     
     
 }
 
 
-extension AddViewController: UITableViewDataSource {
+extension AddViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
+        tableView.deselectRow(at:indexPath, animated:true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -208,11 +222,9 @@ extension AddViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
-        
-        cell.textLabel?.text = ingredients[indexPath.row]
-        //cell.detailTextLabel?.text = "50x"
-        
-        
+        let ingredient = ingredients[indexPath.row].components(separatedBy: "-")
+        cell.textLabel?.text = ingredient[0]
+        cell.detailTextLabel?.text = ingredient[1]
         return cell
     }
     
@@ -220,4 +232,5 @@ extension AddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
 }

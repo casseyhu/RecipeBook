@@ -10,6 +10,12 @@ import UIKit
 
 class RecipeItemViewController: UIViewController {
 
+    @IBOutlet weak var recipe_name: UILabel!
+    @IBOutlet weak var servings: UILabel!
+    @IBOutlet weak var prep_time: UILabel!
+    
+    
+    
     var recipe: Recipe?
     
     
@@ -39,7 +45,6 @@ class RecipeItemViewController: UIViewController {
         This gets called in the background when didSelectRowAt gets called in the extension below. Sets up the destination to load, gets the recipe row index, and grabs that recipe from the recipe array class var. Sets the 'currentRecipe' variable of AddViewController to have a reference to the selected recipe.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("TEst")
         if segue.identifier == "LoadRecipe" {
             print("Running segue to load data into new recipe section")
             let addView = segue.destination as? AddViewController
