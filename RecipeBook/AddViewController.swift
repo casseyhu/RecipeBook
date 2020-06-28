@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /**
     Add recipe ViewController. This class controls the events that happen when the user presses the add (+) button in the Recipes tab.
@@ -86,7 +87,7 @@ class AddViewController: UIViewController {
     }
     
     
-    // 
+    //  BUG: repeat save, needs to update
     @IBAction func saveRecipe(_ sender: Any) {
         let recipe = Recipe(context: PersistenceService.context)
         if let name = recipe_name.text {
@@ -108,6 +109,22 @@ class AddViewController: UIViewController {
         
         PersistenceService.saveContext()
         let _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func fetchEvent(recipeName:String, recipe:Recipe) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", recipeName)
+        do {
+            let results = try PersistenceService.context.fetch(fetchRequest)
+            if results.count != 0 {
+                let managedObject = results[0] as! Recipe
+//                (managedObject as AnyObject).setValue(recipe.name, forKey: "name")
+                print(managedObject.name!)
+                try PersistenceService.context.save()
+            }
+        } catch {
+            print("bad")
+        }
     }
     
     

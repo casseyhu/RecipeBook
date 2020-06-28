@@ -386,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsU-iX-bhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1935" y="1702"/>
+            <point key="canvasLocation" x="-1928" y="1702"/>
         </scene>
         <!--Recipe Item View Controller-->
         <scene sceneID="Vev-zO-1Yw">
@@ -607,7 +607,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vic-K7-K6t"/>
+        <segue reference="UTF-Us-dDN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="fruits" width="237" height="421"/>
