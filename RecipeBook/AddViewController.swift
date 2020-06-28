@@ -129,7 +129,6 @@ class AddViewController: UIViewController {
                 managedObject.setValue(servings, forKey: "servings")
                 managedObject.setValue(prep, forKey: "prep")
                 managedObject.setValue(ingr, forKey: "ingredients")
-                print(managedObject.name! + "---")
                 return true
             }
         } catch {
