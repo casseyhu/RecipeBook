@@ -19,6 +19,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var recipe_name: UITextField!
     @IBOutlet weak var serving_size: UITextField!
     @IBOutlet weak var prep_time: UITextField!
+    @IBOutlet weak var titleTopbar: UINavigationItem!
     
     @IBOutlet var typeButtons: [UIButton]!
     @IBOutlet weak var typeButton: UIButton!
@@ -31,11 +32,27 @@ class AddViewController: UIViewController {
         case other = "Other"
     }
 
+    // Class var to hold a reference to a recipe that can be clicked in the main recipe tab bar.
+    var currentRecipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // If the current recipe != nil, that means it was set in ViewController by a recipe cell being clicked. Load this information into the fields to display.
+        if currentRecipe != nil {
+            titleTopbar.title = "Edit Recipe"
+            recipe_name.text = currentRecipe?.name
+            if let servings = currentRecipe?.servings {
+                serving_size.text = String(servings)
+            }
+            if let prep = currentRecipe?.prep {
+                prep_time.text = String(prep)
+            }
+            // COME BACK TO SETTING INGREDIENTS ONCE IMPLEMENTED
+        }
+        
     }
     
     // Handles selection for recipe type

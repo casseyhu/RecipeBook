@@ -139,6 +139,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="SaA-e1-5Eb" id="5lS-ss-dup"/>
+                        <segue destination="pc1-l1-Wzu" kind="show" identifier="LoadRecipe" id="vfs-o8-1aC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpJ-8l-9OQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -369,6 +370,7 @@
                         <outlet property="prep_time" destination="ZIX-EV-VjI" id="Q43-Q3-Lj7"/>
                         <outlet property="recipe_name" destination="Mhj-az-GlX" id="QO0-9M-CMI"/>
                         <outlet property="serving_size" destination="mes-Qa-VGv" id="Qii-yw-NIt"/>
+                        <outlet property="titleTopbar" destination="6Sh-U9-XWI" id="udG-Eb-Sf3"/>
                         <outlet property="typeButton" destination="61V-Nf-A4X" id="W1G-Rl-4JK"/>
                         <outletCollection property="typeButtons" destination="fwi-7P-KIC" collectionClass="NSMutableArray" id="p7o-Jw-3FT"/>
                         <outletCollection property="typeButtons" destination="gqo-X9-k38" collectionClass="NSMutableArray" id="me9-am-TR0"/>
@@ -640,6 +642,9 @@
             <point key="canvasLocation" x="-865.21739130434787" y="971.65178571428567"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vfs-o8-1aC"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="fruits" width="237" height="421"/>
         <image name="main" width="1745.5" height="2618"/>
