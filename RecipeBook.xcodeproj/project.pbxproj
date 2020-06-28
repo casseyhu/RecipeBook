@@ -21,6 +21,7 @@
 		88525E1024A59E7600067192 /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E0E24A59E7600067192 /* Recipe+CoreDataClass.swift */; };
 		88525E1124A59E7600067192 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */; };
 		88525E1324A68D4600067192 /* MainRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1224A68D4600067192 /* MainRecipeCell.swift */; };
+		88525E1524A8250100067192 /* RecipeItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1424A8250100067192 /* RecipeItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		88525E0E24A59E7600067192 /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88525E1224A68D4600067192 /* MainRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecipeCell.swift; sourceTree = "<group>"; };
+		88525E1424A8250100067192 /* RecipeItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				88525DF824A5571600067192 /* RecipeBook.xcdatamodeld */,
 				88525E0C24A59C2900067192 /* PersistenceService.swift */,
 				88525E1224A68D4600067192 /* MainRecipeCell.swift */,
+				88525E1424A8250100067192 /* RecipeItemViewController.swift */,
 			);
 			path = RecipeBook;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				88525DF424A5571600067192 /* ViewController.swift in Sources */,
 				88525E0D24A59C2900067192 /* PersistenceService.swift in Sources */,
 				88525DF024A5571600067192 /* AppDelegate.swift in Sources */,
+				88525E1524A8250100067192 /* RecipeItemViewController.swift in Sources */,
 				88525E1324A68D4600067192 /* MainRecipeCell.swift in Sources */,
 				88525E0924A58D1500067192 /* AddViewController.swift in Sources */,
 				88525DFA24A5571600067192 /* RecipeBook.xcdatamodeld in Sources */,

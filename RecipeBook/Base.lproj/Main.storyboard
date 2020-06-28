@@ -131,6 +131,11 @@
                         <viewLayoutGuide key="safeArea" id="NZl-J3-rCs"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Recipes" id="bcu-xj-fd5">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="TRv-Aj-XZp">
+                            <connections>
+                                <action selector="editList:" destination="q6G-j6-cfL" id="duM-87-Liw"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E0F-oa-vaU">
                             <connections>
                                 <segue destination="pc1-l1-Wzu" kind="show" id="Vic-K7-K6t"/>
@@ -139,7 +144,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="SaA-e1-5Eb" id="5lS-ss-dup"/>
-                        <segue destination="pc1-l1-Wzu" kind="show" identifier="LoadRecipe" id="vfs-o8-1aC"/>
+                        <segue destination="Cht-CQ-wa8" kind="show" identifier="displayRecipe" id="1pP-E6-LjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpJ-8l-9OQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,73 +386,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsU-iX-bhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1571.0144927536232" y="1663.3928571428571"/>
+            <point key="canvasLocation" x="-1935" y="1702"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Item View Controller-->
         <scene sceneID="Vev-zO-1Yw">
             <objects>
-                <viewController id="Cht-CQ-wa8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="add" id="Cht-CQ-wa8" customClass="RecipeItemViewController" customModule="RecipeBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oK6-hX-kpn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-Sj-254">
-                                <rect key="frame" x="19" y="209" width="375" height="272"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredient_cell" rowHeight="90" id="esp-fu-b6g">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="esp-fu-b6g" id="8Tf-lo-3id">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vze-Uh-thz">
-                                                    <rect key="frame" x="25" y="28" width="250" height="34"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="amount" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mh3-qK-Aqj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="34"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="44J-Db-hXQ"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jQy-HY-i8S">
-                                                            <rect key="frame" x="80" y="0.0" width="170" height="34"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTr-EL-Cxd">
-                                                    <rect key="frame" x="290" y="15" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="dkn-Ci-l8n"/>
-                                                        <constraint firstAttribute="width" constant="60" id="iGb-yL-P7Z"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="oTr-EL-Cxd" firstAttribute="leading" secondItem="vze-Uh-thz" secondAttribute="trailing" constant="15" id="6rI-Ag-h3U"/>
-                                                <constraint firstItem="vze-Uh-thz" firstAttribute="centerY" secondItem="8Tf-lo-3id" secondAttribute="centerY" id="ODg-FF-QYX"/>
-                                                <constraint firstItem="vze-Uh-thz" firstAttribute="leading" secondItem="8Tf-lo-3id" secondAttribute="leadingMargin" constant="5" id="bb2-tD-Dbs"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="oTr-EL-Cxd" secondAttribute="trailing" constant="5" id="kAc-t3-U7l"/>
-                                                <constraint firstItem="oTr-EL-Cxd" firstAttribute="centerY" secondItem="8Tf-lo-3id" secondAttribute="centerY" id="zbn-vS-VF4"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="E0K-Lu-yZK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="FhY-Wh-nab">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="j01-cP-ltg">
+                            <connections>
+                                <action selector="editRecipe:" destination="Cht-CQ-wa8" id="lH7-IQ-eHB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="pc1-l1-Wzu" kind="show" identifier="LoadRecipe" id="UTF-Us-dDN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfA-0f-njA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="1672"/>
+            <point key="canvasLocation" x="-1204" y="1702"/>
         </scene>
         <!--Converter-->
         <scene sceneID="LkF-9u-ovJ">
@@ -643,7 +607,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vfs-o8-1aC"/>
+        <segue reference="Vic-K7-K6t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="fruits" width="237" height="421"/>

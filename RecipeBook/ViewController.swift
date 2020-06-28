@@ -41,25 +41,21 @@ class ViewController: UIViewController {
         } catch {
             print("Could not fetch")
         }
-        
-        print("testing 123")
     }
+    
+    @IBAction func editList(_ sender: UIBarButtonItem) {
+        if(self.tableView.isEditing == true) {
+            self.tableView.isEditing = false
+            sender.title = "Done"
+        } else {
+            self.tableView.isEditing = true
+            sender.title = "Edit"
+        }
+    }
+    
     
     // MARK: - Navigation
     
-    /*
-        This gets called in the background when didSelectRowAt gets called in the extension below. Sets up the destination to load, gets the recipe row index, and grabs that recipe from the recipe array class var. Sets the 'currentRecipe' variable of AddViewController to have a reference to the selected recipe. 
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("TEst")
-        if segue.identifier == "LoadRecipe" {
-            print("Running segue to load data into new recipe section")
-            let addView = segue.destination as? AddViewController
-            let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row
-            let selectedRecipe = recipes[selectedRow!]
-            addView!.currentRecipe = selectedRecipe
-        }
-    }
 
 }
 
@@ -70,8 +66,10 @@ class ViewController: UIViewController {
  */
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
-        tableView.deselectRow(at:indexPath, animated:true)
-        self.performSegue(withIdentifier: "LoadRecipe", sender: tableView.cellForRow(at: indexPath))
+        let vc = storyboard?.instantiateViewController(identifier: "add") as! RecipeItemViewController
+        vc.title = recipes[indexPath.row].name!
+        vc.recipe = recipes[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -120,7 +118,7 @@ extension ViewController: UITableViewDataSource {
             }
             loadDataFromDatabase()
             tableView.reloadData()
-       }
+        }
     }
 }
 

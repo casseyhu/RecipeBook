@@ -86,7 +86,7 @@ class AddViewController: UIViewController {
     }
     
     
-    // fixed bug owo
+    // 
     @IBAction func saveRecipe(_ sender: Any) {
         let recipe = Recipe(context: PersistenceService.context)
         if let name = recipe_name.text {
