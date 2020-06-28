@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-MJ-QCX">
-                                <rect key="frame" x="25" y="113" width="364" height="173"/>
+                                <rect key="frame" x="25" y="98" width="364" height="173"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0co-v6-Twd" userLabel="recipe">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
@@ -323,44 +323,65 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kh-fK-AZu">
-                                <rect key="frame" x="25" y="311" width="122.5" height="17"/>
+                                <rect key="frame" x="25" y="281" width="122.5" height="17"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-8w-yrf">
-                                <rect key="frame" x="0.0" y="343" width="414" height="470"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KO1-Zp-0eX">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="466"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                </subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddo-uq-BBR">
+                                <rect key="frame" x="0.0" y="351" width="414" height="462"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="p1Z-4F-DUK">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p1Z-4F-DUK" id="eIP-yY-hnU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-QN-TkY">
+                                <rect key="frame" x="20" y="309" width="220" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="KO1-Zp-0eX" secondAttribute="trailing" id="5MF-zA-HGe"/>
-                                    <constraint firstItem="KO1-Zp-0eX" firstAttribute="leading" secondItem="NW6-8w-yrf" secondAttribute="leading" id="Eks-zT-F6K"/>
-                                    <constraint firstItem="KO1-Zp-0eX" firstAttribute="top" secondItem="NW6-8w-yrf" secondAttribute="top" id="o4X-Wp-ZNO"/>
-                                    <constraint firstAttribute="bottom" secondItem="KO1-Zp-0eX" secondAttribute="bottom" id="z8f-6s-OLM"/>
+                                    <constraint firstAttribute="width" constant="220" id="wSl-1b-JRn"/>
                                 </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-zr-Pnf">
+                                <rect key="frame" x="248" y="309" width="110" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="WOK-pC-I6u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-fH-Uvy">
+                                <rect key="frame" x="369" y="316" width="25" height="18"/>
+                                <state key="normal" backgroundImage="plus" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Ft7-QN-TkY" firstAttribute="top" secondItem="9kh-fK-AZu" secondAttribute="bottom" constant="11" id="6iL-hv-mmg"/>
+                            <constraint firstItem="Ft7-QN-TkY" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="20" id="Ekx-z7-v9x"/>
+                            <constraint firstItem="hbB-fH-Uvy" firstAttribute="leading" secondItem="rSZ-zr-Pnf" secondAttribute="trailing" constant="11" id="Eup-Ic-8bV"/>
+                            <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="hbB-fH-Uvy" secondAttribute="trailing" constant="20" id="FaI-Pa-8ez"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="bottom" secondItem="7dM-tn-oJA" secondAttribute="bottom" id="G1Z-ZV-u9Q"/>
-                            <constraint firstItem="NW6-8w-yrf" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" id="Gtf-gO-A7A"/>
-                            <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="NW6-8w-yrf" secondAttribute="trailing" id="JgV-MJ-wQY"/>
-                            <constraint firstItem="9kh-fK-AZu" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="25" id="Ml6-RI-vYS"/>
+                            <constraint firstItem="rSZ-zr-Pnf" firstAttribute="leading" secondItem="Ft7-QN-TkY" secondAttribute="trailing" constant="8" id="IKd-wm-sZm"/>
+                            <constraint firstItem="9kh-fK-AZu" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="10" id="Ml6-RI-vYS"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="9kh-fK-AZu" secondAttribute="trailing" constant="266.5" id="P2g-Lr-qbr"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" id="TuA-cJ-Ll1"/>
-                            <constraint firstItem="w2j-MJ-QCX" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" constant="25" id="WBB-PP-M6C"/>
+                            <constraint firstItem="w2j-MJ-QCX" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" constant="10" id="WBB-PP-M6C"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" id="Y4j-vT-Atw"/>
+                            <constraint firstItem="rSZ-zr-Pnf" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="38" id="bNv-ee-41C"/>
                             <constraint firstItem="9kh-fK-AZu" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="25" id="c2o-Wi-Yo7"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="7dM-tn-oJA" secondAttribute="trailing" id="hHx-CC-lrx"/>
-                            <constraint firstItem="NW6-8w-yrf" firstAttribute="top" secondItem="9kh-fK-AZu" secondAttribute="bottom" constant="15" id="iQH-fL-o99"/>
-                            <constraint firstItem="KO1-Zp-0eX" firstAttribute="height" secondItem="Dy9-PI-abG" secondAttribute="height" multiplier="0.520089" id="jdM-qn-nIq"/>
-                            <constraint firstItem="KO1-Zp-0eX" firstAttribute="width" secondItem="Dy9-PI-abG" secondAttribute="width" id="lOP-bF-9eb"/>
-                            <constraint firstItem="LCl-nh-yap" firstAttribute="bottom" secondItem="NW6-8w-yrf" secondAttribute="bottom" id="nuY-v8-UHg"/>
                             <constraint firstItem="w2j-MJ-QCX" firstAttribute="centerX" secondItem="Dy9-PI-abG" secondAttribute="centerX" id="q23-OT-sMK"/>
+                            <constraint firstItem="hbB-fH-Uvy" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="43" id="qXl-Nf-rx2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LCl-nh-yap"/>
                     </view>
@@ -386,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsU-iX-bhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1928" y="1702"/>
+            <point key="canvasLocation" x="-1928.985507246377" y="1701.5625"/>
         </scene>
         <!--Recipe Item View Controller-->
         <scene sceneID="Vev-zO-1Yw">
@@ -614,6 +635,7 @@
         <image name="main" width="1745.5" height="2618"/>
         <image name="marble" width="400" height="614"/>
         <image name="new_recipe" width="750" height="938"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recipe" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="weight-scale" width="25" height="25"/>
