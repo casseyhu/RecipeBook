@@ -25,6 +25,9 @@ class AddViewController: UIViewController {
     @IBOutlet weak var ingredient_name: UITextField!
     @IBOutlet weak var ingredient_qty: UITextField!
   
+    @IBOutlet weak var serving_stepper: UIStepper!
+    @IBOutlet weak var prep_stepper: UIStepper!
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,9 +59,11 @@ class AddViewController: UIViewController {
             recipe_name.text = currentRecipe?.name
             if let servings = currentRecipe?.servings {
                 serving_size.text = String(servings)
+                serving_stepper.value = Double(servings)
             }
             if let prep = currentRecipe?.prep {
                 prep_time.text = String(prep)
+                prep_stepper.value = Double(prep)
             }
             typeButton.setTitle(currentRecipe!.type, for: .normal)
             loadIngredients(ingredString: (currentRecipe?.ingredients)!)

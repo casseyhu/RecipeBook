@@ -415,9 +415,11 @@
                     <connections>
                         <outlet property="ingredient_name" destination="Ft7-QN-TkY" id="UzU-CB-agh"/>
                         <outlet property="ingredient_qty" destination="rSZ-zr-Pnf" id="seT-uS-rAU"/>
+                        <outlet property="prep_stepper" destination="5nN-mi-jKH" id="f9b-Nd-1kG"/>
                         <outlet property="prep_time" destination="ZIX-EV-VjI" id="Q43-Q3-Lj7"/>
                         <outlet property="recipe_name" destination="Mhj-az-GlX" id="QO0-9M-CMI"/>
                         <outlet property="serving_size" destination="mes-Qa-VGv" id="Qii-yw-NIt"/>
+                        <outlet property="serving_stepper" destination="c2Q-pB-frX" id="lzB-54-AyP"/>
                         <outlet property="tableView" destination="ddo-uq-BBR" id="i73-fs-yiN"/>
                         <outlet property="titleTopbar" destination="6Sh-U9-XWI" id="udG-Eb-Sf3"/>
                         <outlet property="typeButton" destination="61V-Nf-A4X" id="W1G-Rl-4JK"/>
@@ -449,12 +451,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FgA-Ba-wwE">
                                         <rect key="frame" x="0.0" y="0.0" width="224" height="110"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X16-el-OvJ">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-1d-g3K">
                                                 <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X16-el-OvJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="152" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-ec-tZw">
+                                                        <rect key="frame" x="152" y="0.0" width="72" height="30"/>
+                                                        <state key="normal" title="Convert"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-IP-7ZZ">
                                                 <rect key="frame" x="0.0" y="40" width="224" height="30"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
@@ -511,11 +522,11 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-1F-0s0">
-                                <rect key="frame" x="25" y="233" width="140" height="18"/>
+                                <rect key="frame" x="25" y="237" width="140" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="fGJ-l0-sYi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -530,7 +541,7 @@
                             <constraint firstItem="piZ-1F-0s0" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" constant="25" id="X6y-cl-UZo"/>
                             <constraint firstItem="G5Y-dj-W7n" firstAttribute="top" secondItem="E0K-Lu-yZK" secondAttribute="top" id="dyx-ei-q3g"/>
                             <constraint firstItem="E0K-Lu-yZK" firstAttribute="bottom" secondItem="G5Y-dj-W7n" secondAttribute="bottom" id="gX9-7m-4sU"/>
-                            <constraint firstItem="piZ-1F-0s0" firstAttribute="top" secondItem="vO3-ek-6oM" secondAttribute="bottom" constant="10" id="nBu-I6-Yjv"/>
+                            <constraint firstItem="piZ-1F-0s0" firstAttribute="top" secondItem="vO3-ek-6oM" secondAttribute="bottom" constant="14" id="nBu-I6-Yjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E0K-Lu-yZK"/>
                     </view>
@@ -729,6 +740,9 @@
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="uVK-a2-8KH">
                                                 <rect key="frame" x="238.5" y="0.0" width="94" height="32"/>
+                                                <connections>
+                                                    <action selector="clicked_stepper:" destination="o06-i9-RnN" eventType="valueChanged" id="4gp-hu-dhX"/>
+                                                </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
@@ -747,6 +761,11 @@
                         <viewLayoutGuide key="safeArea" id="Dci-SJ-Nja"/>
                     </view>
                     <navigationItem key="navigationItem" title="Converter" id="7m7-ay-IAj"/>
+                    <connections>
+                        <outlet property="conversion_rate" destination="k54-g8-foz" id="b75-i1-cHJ"/>
+                        <outlet property="conversion_stepper" destination="uVK-a2-8KH" id="1oM-P0-GSs"/>
+                        <outlet property="recipe_name" destination="BcT-7a-QOL" id="JbN-yT-nvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cMe-BL-J8Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
