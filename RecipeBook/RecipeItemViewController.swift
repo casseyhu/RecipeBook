@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecipeItemViewController: UIViewController {
 
@@ -16,29 +17,51 @@ class RecipeItemViewController: UIViewController {
     @IBOutlet weak var recipe_img: UIImageView!
     @IBOutlet weak var ingredient_table: UITableView!
     
-    
-    
     var recipe: Recipe?
     var ingredients = [String]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        if recipe != nil {
-            // If recipe not nil, that means a recipe was selected from the main recipetabbar. Load these contents.
-            recipe_name.text = recipe?.name
-            servings.text = "Serving Size: \(String(describing: recipe!.servings))"
-            prep_time.text = "Prep Time: \(String(describing: recipe!.prep)) minss"
-            setImage()
-        }
         ingredient_table.delegate = self
         ingredient_table.dataSource = self
         let footer = UIView(frame: .zero)
         footer.backgroundColor = UIColor.clear
         ingredient_table.tableFooterView = footer
+    
+        setupRecipe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupRecipe()
+    }
+    
+    // Setup Recipe Display on screen
+    func setupRecipe() {
+        ingredients = [String]()
+        if fetchRecipe(name: (recipe?.name)!) {
+            recipe_name.text = recipe?.name
+            servings.text = "Serving Size: \(String(describing: recipe!.servings))"
+            prep_time.text = "Prep Time: \(String(describing: recipe!.prep)) mins"
+            setImage()
+        }
         loadIngredients(ingredString: (recipe?.ingredients)!)
+        ingredient_table.reloadData()
+    }
+    
+    // Fetch recipe from database to stay up to date
+    func fetchRecipe(name:String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        do {
+            let results = try PersistenceService.context.fetch(fetchRequest)
+            if results.count != 0 {
+                recipe = results[0] as? Recipe
+                return true
+            }
+        } catch {
+            print("Error Fetching Recipe")
+        }
+        return false
     }
     
     func setImage() {
@@ -71,9 +94,9 @@ class RecipeItemViewController: UIViewController {
             print(elem)
             ingredients.append(elem)
         }
-        
     }
     
+    // Performs segue when user wants to edit the current recipe
     @IBAction func editRecipe(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "LoadRecipe", sender: self)
     }
@@ -116,23 +139,23 @@ extension RecipeItemViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let context = PersistenceService.context
-            //context.delete(ingredients[indexPath.row])
-            ingredients.remove(at: indexPath.row)
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context: Deleting ingredient")
-            }
-            tableView.reloadData()
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let context = PersistenceService.context
+//            ingredients.remove(at: indexPath.row)
+//            
+//            do {
+//                try context.save()
+//            } catch {
+//                print("Error saving context: Deleting ingredient")
+//            }
+//            tableView.reloadData()
+//        }
+//    }
+//    
+//    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
     
 }

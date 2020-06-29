@@ -62,7 +62,6 @@ class AddViewController: UIViewController {
             }
             typeButton.setTitle(currentRecipe!.type, for: .normal)
             loadIngredients(ingredString: (currentRecipe?.ingredients)!)
-            
         }
     }
     
@@ -78,12 +77,11 @@ class AddViewController: UIViewController {
             }
             ingredients.append(elem)
         }
-        
+        tableView.reloadData()
     }
     
     // '+' Button listener in adding a new ingredient to a recipe.
     @IBAction func addIngredient(_ sender: Any) {
-        //check if any are null
         print("Adding ingredient")
         let validIngredients = checkIngredientInput()
         if validIngredients {
@@ -206,6 +204,7 @@ class AddViewController: UIViewController {
                 managedObject.setValue(servings, forKey: "servings")
                 managedObject.setValue(prep, forKey: "prep")
                 managedObject.setValue(ingr, forKey: "ingredients")
+                PersistenceService.saveContext()
                 return true
             }
         } catch {
