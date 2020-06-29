@@ -30,7 +30,7 @@ class RecipeItemViewController: UIViewController {
             // If recipe not nil, that means a recipe was selected from the main recipetabbar. Load these contents.
             recipe_name.text = recipe?.name
             servings.text = "Serving Size: \(String(describing: recipe!.servings))"
-            prep_time.text = "Prep Time: \(String(describing: recipe!.prep)) min"
+            prep_time.text = "Prep Time: \(String(describing: recipe!.prep)) minss"
             setImage()
         }
         ingredient_table.delegate = self

@@ -588,7 +588,7 @@
             </objects>
             <point key="canvasLocation" x="-106" y="289"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Settings-->
         <scene sceneID="P0H-6J-FFR">
             <objects>
                 <viewController id="dW2-tD-h02" customClass="SettingViewController" customModule="RecipeBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -599,11 +599,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-jS-B4L">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="L4x-a4-VbX">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="L4x-a4-VbX">
                                 <rect key="frame" x="30" y="254" width="256" height="82"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS9-ak-oHS">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="256" id="aAo-ua-ilX"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -614,6 +617,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afz-yD-fqR">
                                                 <rect key="frame" x="0.0" y="0.0" width="256" height="37"/>
                                                 <color key="backgroundColor" red="0.63840866090000004" green="0.63852030039999996" blue="0.90591257810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="256" id="UNb-UF-IIr"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="25"/>
                                                 <state key="normal" title="Choose Sort Order">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -647,17 +653,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-MY-2gj">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-MY-2gj">
                                 <rect key="frame" x="30" y="480" width="316.5" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqe-b3-wwj">
                                         <rect key="frame" x="0.0" y="0.0" width="252.5" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="252.5" id="uZW-85-ynS"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1OK-JF-x6f">
                                         <rect key="frame" x="267.5" y="0.0" width="51" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="eO2-gp-CHe"/>
+                                        </constraints>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -665,13 +677,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3j3-jS-B4L" firstAttribute="top" secondItem="8fa-fT-VNH" secondAttribute="top" id="3QL-KG-BdY"/>
+                            <constraint firstItem="OsC-MY-2gj" firstAttribute="top" secondItem="L4x-a4-VbX" secondAttribute="bottom" constant="144" id="4iN-TA-RPX"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="bottom" secondItem="3j3-jS-B4L" secondAttribute="bottom" id="6Dj-lq-9Tl"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="trailing" secondItem="3j3-jS-B4L" secondAttribute="trailing" id="La9-i7-TfW"/>
+                            <constraint firstItem="OsC-MY-2gj" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" constant="30" id="QJL-oj-5e9"/>
+                            <constraint firstItem="L4x-a4-VbX" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" constant="30" id="R8w-dk-eDE"/>
                             <constraint firstItem="3j3-jS-B4L" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" id="eNS-K9-wFG"/>
+                            <constraint firstItem="OsC-MY-2gj" firstAttribute="top" secondItem="L4x-a4-VbX" secondAttribute="bottom" constant="144" id="qqM-Dm-Vq7"/>
+                            <constraint firstItem="L4x-a4-VbX" firstAttribute="top" secondItem="8fa-fT-VNH" secondAttribute="top" constant="166" id="vpz-jb-Dpj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8fa-fT-VNH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ad1-sJ-Sp4"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Ad1-sJ-Sp4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNU-T1-V1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -748,7 +765,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UTF-Us-dDN"/>
+        <segue reference="Vic-K7-K6t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cheesecake" width="1530" height="2295.5"/>
