@@ -440,7 +440,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe_view" translatesAutoresizingMaskIntoConstraints="NO" id="G5Y-dj-W7n">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cheesecake" translatesAutoresizingMaskIntoConstraints="NO" id="G5Y-dj-W7n">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vO3-ek-6oM">
@@ -451,19 +451,19 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X16-el-OvJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="22"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-IP-7ZZ">
                                                 <rect key="frame" x="0.0" y="40" width="224" height="30"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="22"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-Lf-2NA">
                                                 <rect key="frame" x="0.0" y="80" width="224" height="30"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="22"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -478,6 +478,47 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvK-SI-mi5">
+                                <rect key="frame" x="0.0" y="259" width="414" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="N1n-Dt-asn" detailTextLabel="AT5-wA-Lel" rowHeight="60" style="IBUITableViewCellStyleValue1" id="6tp-0E-hZV">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6tp-0E-hZV" id="2f0-5L-uIg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N1n-Dt-asn">
+                                                    <rect key="frame" x="20" y="22" width="51.5" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AT5-wA-Lel">
+                                                    <rect key="frame" x="332.5" y="22" width="61.5" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-1F-0s0">
+                                <rect key="frame" x="25" y="233" width="140" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="fGJ-l0-sYi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -486,8 +527,10 @@
                             <constraint firstItem="vO3-ek-6oM" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" constant="25" id="9zT-Qf-YWL"/>
                             <constraint firstItem="G5Y-dj-W7n" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" id="UI2-1s-O84"/>
                             <constraint firstItem="vO3-ek-6oM" firstAttribute="top" secondItem="E0K-Lu-yZK" secondAttribute="top" constant="25" id="W2K-rD-wTl"/>
+                            <constraint firstItem="piZ-1F-0s0" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" constant="25" id="X6y-cl-UZo"/>
                             <constraint firstItem="G5Y-dj-W7n" firstAttribute="top" secondItem="E0K-Lu-yZK" secondAttribute="top" id="dyx-ei-q3g"/>
                             <constraint firstItem="E0K-Lu-yZK" firstAttribute="bottom" secondItem="G5Y-dj-W7n" secondAttribute="bottom" id="gX9-7m-4sU"/>
+                            <constraint firstItem="piZ-1F-0s0" firstAttribute="top" secondItem="vO3-ek-6oM" secondAttribute="bottom" constant="10" id="nBu-I6-Yjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E0K-Lu-yZK"/>
                     </view>
@@ -499,7 +542,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ingredient_table" destination="cvK-SI-mi5" id="YwM-NH-kah"/>
                         <outlet property="prep_time" destination="TUR-Lf-2NA" id="GNg-yk-fNB"/>
+                        <outlet property="recipe_img" destination="dzS-4T-7RJ" id="gXV-Lb-hPy"/>
                         <outlet property="recipe_name" destination="X16-el-OvJ" id="eWx-Rf-wun"/>
                         <outlet property="servings" destination="0ho-IP-7ZZ" id="Gn6-YJ-UtG"/>
                         <segue destination="pc1-l1-Wzu" kind="show" identifier="LoadRecipe" id="UTF-Us-dDN"/>
@@ -507,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfA-0f-njA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1204" y="1702"/>
+            <point key="canvasLocation" x="-1204.3478260869565" y="1701.5625"/>
         </scene>
         <!--Converter-->
         <scene sceneID="LkF-9u-ovJ">
@@ -706,13 +751,13 @@
         <segue reference="UTF-Us-dDN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="cheesecake" width="1530" height="2295.5"/>
         <image name="macaron" width="317" height="475.5"/>
         <image name="main" width="1745.5" height="2618"/>
         <image name="marble" width="400" height="614"/>
         <image name="new_recipe" width="750" height="938"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recipe" width="25" height="25"/>
-        <image name="recipe_view" width="1350" height="900"/>
         <image name="settings" width="25" height="25"/>
         <image name="weight-scale" width="25" height="25"/>
     </resources>

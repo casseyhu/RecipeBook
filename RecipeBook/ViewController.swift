@@ -58,6 +58,8 @@ class ViewController: UIViewController {
 
 /*
  Table View Delegate for selecting a row
+ Pushes RecipeViewController's view onto the nav stack to display.
+ Sets the var 'recipe' of RecipeViewController to hold a reference to the selected Recipe object.
  */
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {

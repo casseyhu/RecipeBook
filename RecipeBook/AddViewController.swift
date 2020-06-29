@@ -48,7 +48,7 @@ class AddViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         let footer = UIView(frame: .zero)
-        footer.backgroundColor = UIColor.black
+        footer.backgroundColor = UIColor.clear
         tableView.tableFooterView = footer
         
         if currentRecipe != nil {
