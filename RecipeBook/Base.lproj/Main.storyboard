@@ -569,7 +569,7 @@
         <scene sceneID="LkF-9u-ovJ">
             <objects>
                 <navigationController id="lQq-Wl-cOa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Converter" image="weight-scale" id="7nj-Ra-FKo"/>
+                    <tabBarItem key="tabBarItem" title="Converter" image="converter" selectedImage="converter" id="7nj-Ra-FKo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9l0-gT-vyF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -777,6 +777,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cheesecake" width="1530" height="2295.5"/>
+        <image name="converter" width="26.666666030883789" height="26"/>
         <image name="macaron" width="317" height="475.5"/>
         <image name="main" width="1745.5" height="2618"/>
         <image name="marble" width="400" height="614"/>
@@ -784,6 +785,5 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recipe" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
-        <image name="weight-scale" width="25" height="25"/>
     </resources>
 </document>
