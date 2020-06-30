@@ -35,10 +35,15 @@ class ConverterViewController: UIViewController {
         initRecipeDropdown()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDatabase()
+        initRecipeDropdown()
+    }
     
     /* After grabbing all the Recipe objects from the db, we create a button for each recipe with the title being the Recipe's name. We take this button and add it to the stackview for the dropdown: 'recipe_stack'. The new buttons will all be initially hidden and their action listeners/target will be set to the recipeTapped() function.
      */
     func initRecipeDropdown() {
+        recipe_name_buttons = [UIButton]()
         recipe_stack.alignment = .fill
         recipe_stack.distribution = .fillEqually
         recipe_stack.spacing = 0
@@ -46,14 +51,14 @@ class ConverterViewController: UIViewController {
             let button = UIButton()
             button.setTitle(rec.name!, for: .normal)
             button.titleLabel?.font = UIFont(name: "Courier", size: 18)
-            button.backgroundColor = #colorLiteral(red: 0.8956311605, green: 0.9496255409, blue: 0.973573151, alpha: 1)
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.backgroundColor = #colorLiteral(red: 0.6665995121, green: 0.666713655, blue: 0.6665844917, alpha: 1)
             button.addTarget(self, action: #selector(recipeTapped(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.isHidden = true
             recipe_stack.addArrangedSubview(button)
             recipe_name_buttons.append(button)
         }
-        
     }
     
     /*
@@ -80,22 +85,18 @@ class ConverterViewController: UIViewController {
         If a recipe is tapped, search for which recipe was clicked and set the title of the recipe_button (initial dropdown button) to the name of the recipe chosen.
      */
     @objc func recipeTapped(_ sender: UIButton?){
-        for button in recipe_name_buttons {
-            if button == sender {
-//                print((button.titleLabel?.text)!)
-//                print(recipes[indx].name!)
-                recipe_button.titleLabel!.text = button.titleLabel?.text
-                print("Set button title: \(recipe_button.titleLabel!.text)")
-                recipe_click()
-                return
-            }
+        guard let title = sender?.currentTitle else {
+            return
         }
+        recipe_button.setTitle(title, for: .normal)
+        recipe_click()
     }
     
     /*
      Load tasks from the Recipe database
      */
     func loadDataFromDatabase() {
+        recipes = [Recipe]()
         let context = PersistenceService.persistentContainer.viewContext
         let request = NSFetchRequest<Recipe>(entityName: "Recipe")
         do {
@@ -106,7 +107,8 @@ class ConverterViewController: UIViewController {
     }
     
     @IBAction func clicked_stepper(_ sender: UIStepper) {
-        conversion_rate.text = String(sender.value)
+        let val = Double(round(10 * sender.value)/10)
+        conversion_rate.text = String(val)
     }
     
 

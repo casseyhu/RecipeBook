@@ -257,7 +257,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let context = PersistenceService.context
-            //context.delete(ingredients[indexPath.row])
             ingredients.remove(at: indexPath.row)
             do {
                 try context.save()
