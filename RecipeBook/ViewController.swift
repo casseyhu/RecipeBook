@@ -24,6 +24,10 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
+
+        let settings = UserDefaults.standard
+        settings.set("name", forKey: "SortField")
+        settings.set(true, forKey: "SortAscending")
         
         loadDataFromDatabase()
         tableView.reloadData()
@@ -36,6 +40,12 @@ class ViewController: UIViewController {
     
     func loadDataFromDatabase() {
         let request = NSFetchRequest<Recipe>(entityName: "Recipe")
+        let settings = UserDefaults.standard
+        let sortField = settings.string(forKey: "SortField")
+        let sortAscending = settings.bool(forKey: "SortAscending")
+        let sort = NSSortDescriptor(key: sortField, ascending: sortAscending)
+        let sortDescriptors = [sort]
+        request.sortDescriptors = sortDescriptors
         do {
             recipes = try context.fetch(request)
         } catch {

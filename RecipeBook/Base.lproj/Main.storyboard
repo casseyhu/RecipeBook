@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SaA-e1-5Eb">
-                                <rect key="frame" x="0.0" y="93" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -119,7 +119,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="NZl-J3-rCs" firstAttribute="bottom" secondItem="SaA-e1-5Eb" secondAttribute="bottom" constant="5" id="Gyd-uG-vcS"/>
+                            <constraint firstItem="NZl-J3-rCs" firstAttribute="bottom" secondItem="SaA-e1-5Eb" secondAttribute="bottom" id="Gyd-uG-vcS"/>
                             <constraint firstItem="NZl-J3-rCs" firstAttribute="trailing" secondItem="lic-wf-kzB" secondAttribute="trailing" id="Khg-dN-y3N"/>
                             <constraint firstItem="lic-wf-kzB" firstAttribute="leading" secondItem="NZl-J3-rCs" secondAttribute="leading" id="Lu0-RD-id8"/>
                             <constraint firstItem="NZl-J3-rCs" firstAttribute="bottom" secondItem="lic-wf-kzB" secondAttribute="bottom" id="NPh-lP-ZNd"/>
@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-MJ-QCX">
-                                <rect key="frame" x="25" y="103" width="364" height="173"/>
+                                <rect key="frame" x="25" y="103" width="364" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0co-v6-Twd" userLabel="recipe">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="34"/>
@@ -320,17 +320,16 @@
                                             </stepper>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kh-fK-AZu">
+                                        <rect key="frame" x="0.0" y="188" width="364" height="17"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kh-fK-AZu">
-                                <rect key="frame" x="25" y="286" width="122.5" height="17"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddo-uq-BBR">
-                                <rect key="frame" x="0.0" y="359" width="414" height="454"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddo-uq-BBR">
+                                <rect key="frame" x="0.0" y="352" width="414" height="461"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="5sN-D8-mik" detailTextLabel="nt2-Fp-X7s" rowHeight="60" style="IBUITableViewCellStyleValue1" id="p1Z-4F-DUK">
@@ -360,48 +359,50 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-QN-TkY">
-                                <rect key="frame" x="20" y="314" width="220" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="wSl-1b-JRn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-zr-Pnf">
-                                <rect key="frame" x="248" y="314" width="110" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="WOK-pC-I6u"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-fH-Uvy">
-                                <rect key="frame" x="369" y="321" width="25" height="18"/>
-                                <state key="normal" backgroundImage="plus" catalog="system"/>
-                                <connections>
-                                    <action selector="addIngredient:" destination="pc1-l1-Wzu" eventType="touchUpInside" id="osF-Fb-DeB"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JPj-lA-4Tf">
+                                <rect key="frame" x="10" y="313" width="394" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredient Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-QN-TkY">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="L25-cP-F6e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-zr-Pnf">
+                                        <rect key="frame" x="230" y="0.0" width="120" height="34"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbB-fH-Uvy">
+                                        <rect key="frame" x="360" y="2" width="34" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="XF9-uv-Kvn"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addIngredient:" destination="pc1-l1-Wzu" eventType="touchUpInside" id="osF-Fb-DeB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ft7-QN-TkY" firstAttribute="top" secondItem="9kh-fK-AZu" secondAttribute="bottom" constant="11" id="6iL-hv-mmg"/>
-                            <constraint firstItem="Ft7-QN-TkY" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="20" id="Ekx-z7-v9x"/>
-                            <constraint firstItem="hbB-fH-Uvy" firstAttribute="leading" secondItem="rSZ-zr-Pnf" secondAttribute="trailing" constant="11" id="Eup-Ic-8bV"/>
-                            <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="hbB-fH-Uvy" secondAttribute="trailing" constant="20" id="FaI-Pa-8ez"/>
+                            <constraint firstItem="ddo-uq-BBR" firstAttribute="trailing" secondItem="LCl-nh-yap" secondAttribute="trailing" id="4ce-SW-lIQ"/>
+                            <constraint firstItem="JPj-lA-4Tf" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="5" id="Fen-iz-esh"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="bottom" secondItem="7dM-tn-oJA" secondAttribute="bottom" id="G1Z-ZV-u9Q"/>
-                            <constraint firstItem="rSZ-zr-Pnf" firstAttribute="leading" secondItem="Ft7-QN-TkY" secondAttribute="trailing" constant="8" id="IKd-wm-sZm"/>
-                            <constraint firstItem="9kh-fK-AZu" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="10" id="Ml6-RI-vYS"/>
-                            <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="9kh-fK-AZu" secondAttribute="trailing" constant="266.5" id="P2g-Lr-qbr"/>
+                            <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="JPj-lA-4Tf" secondAttribute="trailing" constant="10" id="H1T-yg-qPs"/>
+                            <constraint firstItem="JPj-lA-4Tf" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="10" id="Pd0-NM-cEl"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" id="TuA-cJ-Ll1"/>
                             <constraint firstItem="w2j-MJ-QCX" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" constant="15" id="WBB-PP-M6C"/>
+                            <constraint firstItem="ddo-uq-BBR" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" id="X1m-Kt-8kp"/>
                             <constraint firstItem="7dM-tn-oJA" firstAttribute="top" secondItem="LCl-nh-yap" secondAttribute="top" id="Y4j-vT-Atw"/>
-                            <constraint firstItem="rSZ-zr-Pnf" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="38" id="bNv-ee-41C"/>
-                            <constraint firstItem="9kh-fK-AZu" firstAttribute="leading" secondItem="LCl-nh-yap" secondAttribute="leading" constant="25" id="c2o-Wi-Yo7"/>
                             <constraint firstItem="LCl-nh-yap" firstAttribute="trailing" secondItem="7dM-tn-oJA" secondAttribute="trailing" id="hHx-CC-lrx"/>
+                            <constraint firstItem="ddo-uq-BBR" firstAttribute="bottom" secondItem="LCl-nh-yap" secondAttribute="bottom" id="nXY-9P-xVD"/>
+                            <constraint firstItem="ddo-uq-BBR" firstAttribute="top" secondItem="JPj-lA-4Tf" secondAttribute="bottom" constant="5" id="nsx-6F-W8k"/>
                             <constraint firstItem="w2j-MJ-QCX" firstAttribute="centerX" secondItem="Dy9-PI-abG" secondAttribute="centerX" id="q23-OT-sMK"/>
-                            <constraint firstItem="hbB-fH-Uvy" firstAttribute="top" secondItem="w2j-MJ-QCX" secondAttribute="bottom" constant="43" id="qXl-Nf-rx2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LCl-nh-yap"/>
                     </view>
@@ -432,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsU-iX-bhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1928.985507246377" y="1701.5625"/>
+            <point key="canvasLocation" x="-1871" y="1702"/>
         </scene>
         <!--Recipe Item View Controller-->
         <scene sceneID="Vev-zO-1Yw">
@@ -608,17 +609,34 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-jS-B4L">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-MY-2gj">
+                                <rect key="frame" x="40" y="208" width="334" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqe-b3-wwj">
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="31"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1OK-JF-x6f">
+                                        <rect key="frame" x="285" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="sortAscendingToggle:" destination="dW2-tD-h02" eventType="valueChanged" id="vN1-bj-gal"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="L4x-a4-VbX">
-                                <rect key="frame" x="40" y="254" width="264" height="82"/>
+                                <rect key="frame" x="40" y="279" width="264" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS9-ak-oHS">
-                                        <rect key="frame" x="0.0" y="0.0" width="264" height="30"/>
-                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="26"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sGZ-gQ-qit">
-                                        <rect key="frame" x="0.0" y="45" width="264" height="37"/>
+                                        <rect key="frame" x="0.0" y="41" width="264" height="37"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afz-yD-fqR">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="37"/>
@@ -627,6 +645,9 @@
                                                 <state key="normal" title="Choose Sort Order">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="handleSortSelection:" destination="dW2-tD-h02" eventType="touchUpInside" id="PvK-3L-CUK"/>
+                                                </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cke-pc-PXR">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="0.0"/>
@@ -635,6 +656,9 @@
                                                 <state key="normal" title="Recipe Name">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sortOrderTapped:" destination="dW2-tD-h02" eventType="touchUpInside" id="xRg-7Q-e03"/>
+                                                </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEf-Gg-Ijn">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="0.0"/>
@@ -643,6 +667,9 @@
                                                 <state key="normal" title="Serving Size">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sortOrderTapped:" destination="dW2-tD-h02" eventType="touchUpInside" id="D6o-sy-nG4"/>
+                                                </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGb-lg-XO9">
                                                 <rect key="frame" x="0.0" y="0.0" width="264" height="0.0"/>
@@ -651,42 +678,38 @@
                                                 <state key="normal" title="Prep Time">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sortOrderTapped:" destination="dW2-tD-h02" eventType="touchUpInside" id="Q9D-nM-4vB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-MY-2gj">
-                                <rect key="frame" x="40" y="456" width="334" height="31"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqe-b3-wwj">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="31"/>
-                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1OK-JF-x6f">
-                                        <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                    </switch>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3j3-jS-B4L" firstAttribute="top" secondItem="8fa-fT-VNH" secondAttribute="top" id="3QL-KG-BdY"/>
-                            <constraint firstItem="OsC-MY-2gj" firstAttribute="top" secondItem="L4x-a4-VbX" secondAttribute="bottom" constant="120" id="4iN-TA-RPX"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="bottom" secondItem="3j3-jS-B4L" secondAttribute="bottom" id="6Dj-lq-9Tl"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="trailing" secondItem="3j3-jS-B4L" secondAttribute="trailing" id="La9-i7-TfW"/>
                             <constraint firstItem="OsC-MY-2gj" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" constant="40" id="QJL-oj-5e9"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="trailing" secondItem="L4x-a4-VbX" secondAttribute="trailing" constant="110" id="Qi6-KU-QY4"/>
                             <constraint firstItem="L4x-a4-VbX" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" constant="40" id="R8w-dk-eDE"/>
+                            <constraint firstItem="L4x-a4-VbX" firstAttribute="top" secondItem="OsC-MY-2gj" secondAttribute="bottom" constant="40" id="Uzk-HB-erS"/>
                             <constraint firstItem="3j3-jS-B4L" firstAttribute="leading" secondItem="8fa-fT-VNH" secondAttribute="leading" id="eNS-K9-wFG"/>
                             <constraint firstItem="8fa-fT-VNH" firstAttribute="trailing" secondItem="OsC-MY-2gj" secondAttribute="trailing" constant="40" id="gGB-JW-oXi"/>
-                            <constraint firstItem="L4x-a4-VbX" firstAttribute="top" secondItem="8fa-fT-VNH" secondAttribute="top" constant="166" id="vpz-jb-Dpj"/>
+                            <constraint firstItem="OsC-MY-2gj" firstAttribute="top" secondItem="8fa-fT-VNH" secondAttribute="top" constant="120" id="mJ6-zZ-KKt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8fa-fT-VNH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Ad1-sJ-Sp4"/>
+                    <connections>
+                        <outlet property="sortAscending" destination="1OK-JF-x6f" id="XxQ-9a-yTB"/>
+                        <outlet property="sortButton" destination="afz-yD-fqR" id="JyZ-i1-6Km"/>
+                        <outletCollection property="sortButtons" destination="cke-pc-PXR" collectionClass="NSMutableArray" id="otr-AI-SJK"/>
+                        <outletCollection property="sortButtons" destination="bEf-Gg-Ijn" collectionClass="NSMutableArray" id="cNE-ot-Lyy"/>
+                        <outletCollection property="sortButtons" destination="HGb-lg-XO9" collectionClass="NSMutableArray" id="c7t-N4-SBA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNU-T1-V1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -783,7 +806,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UTF-Us-dDN"/>
+        <segue reference="Vic-K7-K6t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cheesecake" width="1530" height="2295.5"/>
