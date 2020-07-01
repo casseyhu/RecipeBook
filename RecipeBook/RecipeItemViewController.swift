@@ -114,6 +114,10 @@ class RecipeItemViewController: UIViewController {
             let addView = segue.destination as? AddViewController
             addView!.currentRecipe = recipe
         }
+        else if segue.identifier == "RecipeConvert" {
+            let convertView = segue.destination as? ConverterViewController
+            convertView!.current_recipe = recipe
+        }
     }
 
 }

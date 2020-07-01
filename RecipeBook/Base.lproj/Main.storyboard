@@ -445,31 +445,31 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vO3-ek-6oM">
-                                <rect key="frame" x="15" y="103" width="384" height="135"/>
+                                <rect key="frame" x="15" y="103" width="384" height="139"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FgA-Ba-wwE">
-                                        <rect key="frame" x="0.0" y="0.0" width="279" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="139"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X16-el-OvJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="279" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-IP-7ZZ">
-                                                <rect key="frame" x="0.0" y="36.5" width="279" height="26"/>
+                                                <rect key="frame" x="0.0" y="37.5" width="279" height="27"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-Lf-2NA">
-                                                <rect key="frame" x="0.0" y="72.5" width="279" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="74.5" width="279" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-1F-0s0">
-                                                <rect key="frame" x="0.0" y="109" width="279" height="26"/>
+                                                <rect key="frame" x="0.0" y="112" width="279" height="27"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-1d-g3K">
-                                        <rect key="frame" x="284" y="0.0" width="100" height="135"/>
+                                        <rect key="frame" x="284" y="0.0" width="100" height="139"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dzS-4T-7RJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -486,11 +486,13 @@
                                                     <constraint firstAttribute="height" constant="100" id="qZO-rY-Je6"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rc-QA-ehT">
-                                                <rect key="frame" x="0.0" y="105" width="100" height="30"/>
-                                                <state key="normal" title="Convert"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rc-QA-ehT">
+                                                <rect key="frame" x="0.0" y="105" width="100" height="34"/>
+                                                <state key="normal" title="Convert">
+                                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
-                                                    <segue destination="o06-i9-RnN" kind="show" id="Oxp-EV-wo6"/>
+                                                    <segue destination="o06-i9-RnN" kind="show" identifier="RecipeConvert" id="Oxp-EV-wo6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -498,7 +500,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvK-SI-mi5">
-                                <rect key="frame" x="0.0" y="243" width="414" height="570"/>
+                                <rect key="frame" x="0.0" y="247" width="414" height="566"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="N1n-Dt-asn" detailTextLabel="AT5-wA-Lel" rowHeight="60" style="IBUITableViewCellStyleValue1" id="6tp-0E-hZV">

@@ -45,6 +45,9 @@ class ConverterViewController: UIViewController {
         ingredient_table.tableFooterView = footer
         if current_recipe != nil {
             recipe_button.setTitle(current_recipe?.name!, for: .normal)
+            loadIngredients(ingredString: (current_recipe?.ingredients)!)
+            prep_time.text = "Prep Time: \((current_recipe?.prep)!) mins"
+            
         }
     }
     
