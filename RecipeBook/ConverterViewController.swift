@@ -163,23 +163,6 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let context = PersistenceService.context
-            current_recipe_ingredients.remove(at: indexPath.row)
-            do {
-                try context.save()
-            } catch {
-                print("Error saving context: Deleting ingredient")
-            }
-            tableView.reloadData()
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
     
 }
 
