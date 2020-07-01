@@ -35,7 +35,7 @@ class RecipeItemViewController: UIViewController {
         setupRecipe()
     }
     
-    // Setup Recipe Display on screen
+    
     func setupRecipe() {
         ingredients = [String]()
         if fetchRecipe(name: (recipe?.name)!) {

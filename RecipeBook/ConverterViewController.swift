@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-/**
-    Converter tab ViewController. 
- */
+
 class ConverterViewController: UIViewController {
 
     
@@ -56,8 +54,11 @@ class ConverterViewController: UIViewController {
         initRecipeDropdown()
     }
     
-    /* After grabbing all the Recipe objects from the db, we create a button for each recipe with the title being the Recipe's name. We take this button and add it to the stackview for the dropdown: 'recipe_stack'. The new buttons will all be initially hidden and their action listeners/target will be set to the recipeTapped() function.
-     */
+    /// Sets up the stackview dropdown menu for selecting a recipe.
+    ///
+    /// After grabbing all the Recipe objects from the db, we create a button for each recipe with the title being the Recipe's name. We take this button and add
+    /// it to the stackview for the dropdown: 'recipe_stack'. The new buttons will all be initially hidden and their action listeners/target will be set to the
+    /// recipeTapped() function.
     func initRecipeDropdown() {
         recipe_name_buttons = [UIButton]()
         recipe_stack.alignment = .fill
@@ -77,17 +78,16 @@ class ConverterViewController: UIViewController {
         }
     }
     
-    /*
-        Handles the choose a recipe button being clicked.
-     */
+    /// Handles the choose a recipe button being clicked.
+    ///
+    /// - Parameters:
+    ///     - sender: UIButton for the stackview dropdown.
     @IBAction func handleRecipeSelection(_ sender: Any) {
         print("Clicked choose recipe")
         recipe_click()
     }
     
-    /*
-        Animates the dropdown of the recipes to choose from.
-     */
+    /// Animates the dropdown of the recipes to choose from by showing/hiding dropdown menu.
     func recipe_click(){
         recipe_name_buttons.forEach{ (button) in
             UIView.animate(withDuration: 0.3, animations: {
@@ -97,9 +97,10 @@ class ConverterViewController: UIViewController {
         }
     }
     
-    /*
-        If a recipe is tapped, search for which recipe was clicked and set the title of the recipe_button (initial dropdown button) to the name of the recipe chosen.
-     */
+    /// Searches for which recipe was clicked and set the title of the recipe_button (initial dropdown button) to the name of the recipe chosen.
+    ///
+    /// - Parameters:
+    ///     - sender: UIButton of the recipe from the menu dropdown.
     @objc func recipeTapped(_ sender: UIButton?){
         guard let title = sender?.currentTitle else {
             return
@@ -114,6 +115,7 @@ class ConverterViewController: UIViewController {
     
     // MARK: - Load data methods
 
+    /// Loads recipe(s) from SQLite database using Core Data.
     func loadDataFromDatabase() {
         recipes = [Recipe]()
         let context = PersistenceService.persistentContainer.viewContext
@@ -125,6 +127,7 @@ class ConverterViewController: UIViewController {
         }
     }
     
+    /// Loads ingredients of the current selected recipe into screen's UITableView.
     func loadIngredients(ingredString: String){
         current_recipe_ingredients = [String]()
         let dummyIngred = ingredString.components(separatedBy: "``")
@@ -139,6 +142,7 @@ class ConverterViewController: UIViewController {
         loadIngredientQuantities()
     }
     
+    /// Loads the ingredient quantities (i.e.: Eggs    2x) for conversion parsing.
     func loadIngredientQuantities(){
         ingredient_qty = [Double]()
         original_units = [String]()
@@ -155,6 +159,7 @@ class ConverterViewController: UIViewController {
         }
     }
     
+    /// Gets the respective Double of the String quantities loaded in by loadIngredientQuantities and their respective units.
     func getQtyValue(qtyString: String) -> Double? {
         var quant = ""
         var unit = ""
@@ -188,6 +193,8 @@ class ConverterViewController: UIViewController {
     }
     
     // MARK: - Stepper listener
+    
+    /// Listener for the stepper (- / +). Increments and decrements by 0.1. Updates ingredient quantities multiplicatively upon press.
     @IBAction func clicked_stepper(_ sender: UIStepper) {
         let val = Double(round(10 * sender.value)/10)
         conversion_rate.text = String(val)
@@ -200,6 +207,7 @@ class ConverterViewController: UIViewController {
     
     // MARK: - Ingredient Adjust function
 
+    /// Adjusts ingredient quantities and updates UITableView data source. 
     func adjustIngredients() {
         if convert_rate != nil, current_recipe != nil{
             print("test")

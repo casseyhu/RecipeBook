@@ -9,10 +9,8 @@
 import UIKit
 import CoreData
 
-/**
-    Add recipe ViewController. This class controls the events that happen when the user presses the add (+) button in the Recipes tab.
-    Adds new recipe to database.
- */
+/// Add recipe ViewController. Controls the events that happen when the user presses the add (+) button in the Recipes tab.
+/// Adds new recipe to database.
 
 class AddViewController: UIViewController {
 
@@ -42,7 +40,7 @@ class AddViewController: UIViewController {
         case other = "Other"
     }
 
-    // Class var to hold a reference to a recipe that can be clicked in the main recipe tab bar.
+    
     var currentRecipe: Recipe?
     var ingredients = [String]()
     
@@ -70,7 +68,11 @@ class AddViewController: UIViewController {
         }
     }
     
-    // Formats the ingredients from X`Y`` into the 'ingredients' class var to load into view.
+    /// Formats the ingredients from X`Y`` into the 'ingredients' class var to load into UITableView.
+    ///
+    /// - Parameters:
+    ///      - ingredString: Ingredients for the recipe in the format of Eggs`2x`` with '`' and '``' as delimiters.
+    
     func loadIngredients(ingredString: String){
         let dummyIngred = ingredString.components(separatedBy: "``")
         for elem in dummyIngred {
@@ -85,7 +87,7 @@ class AddViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // '+' Button listener in adding a new ingredient to a recipe.
+    /// Listener to add a new recipe.
     @IBAction func addIngredient(_ sender: Any) {
         print("Adding ingredient")
         if checkTextInput([ingredient_name, ingredient_qty]) {
@@ -96,7 +98,10 @@ class AddViewController: UIViewController {
         }
     }
     
-    // Checks if text fields are empty. If the textfield is empty, shake the UITextFields to indicate a missing element.
+    /// Checks for valid user input for text fields in adding/editing recipies.
+    /// - Parameters:
+    ///     - txtFields: Array of the UITextField elements on the UI.
+    /// - Returns: Bool indicating if the inputs were well formatted, false otherwise.
     func checkTextInput(_ txtFields:[UITextField]) -> Bool {
         var valid:Bool = true
         for txtField in txtFields {
@@ -114,7 +119,10 @@ class AddViewController: UIViewController {
         return valid
     }
     
-    // Shake animation on a UITextField and highlights the borders red.
+    /// Shake animation on a UITextField. Highlights the borders red.
+    ///
+    /// - Parameters:
+    ///     - textField: Textfield to shake.
     func errorShake(textField: UITextField){
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.08
@@ -125,11 +133,12 @@ class AddViewController: UIViewController {
         textField.layer.add(animation, forKey: "position")
     }
     
-    // Handles selection for recipe type
+    /// Handles selection for recipe type
     @IBAction func handleTypeSelection(_ sender: UIButton) {
         type_click()
     }
     
+    /// Animates the dropdown of the recipes to choose from by showing/hiding dropdown menu.
     func type_click() {
         typeButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
@@ -139,6 +148,10 @@ class AddViewController: UIViewController {
         }
     }
     
+    /// Sets the title of the stackview dropdown menu upon user choice.
+    ///
+    /// - Parameters:
+    ///     - sender: UIButton of the dropdown menu for category of recipe.
     @IBAction func typeTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle, let type = RecipeType(rawValue: title) else {
             return
@@ -147,6 +160,10 @@ class AddViewController: UIViewController {
         type_click()
     }
     
+    /// Stepper listener. Increments/decrements by 1.
+    ///
+    /// - Parameters:
+    ///     - sender: UIStepper widget to listen to.
     @IBAction func clickedStepper(_ sender: UIStepper) {
         if sender.restorationIdentifier! == "serving_stepper" {
             serving_size.text = String(sender.value)
@@ -156,7 +173,10 @@ class AddViewController: UIViewController {
         }
     }
     
-    // Saves a recipe into database or update if recipe name already exists
+    /// Saves a recipe into database or updates if recipe name already exists.
+    ///
+    /// - Parameters:
+    ///     - sender: Save widget to listen on.
     @IBAction func saveRecipe(_ sender: Any) {
         if !checkTextInput([recipe_name, serving_size, prep_time]) {
             return
@@ -190,6 +210,15 @@ class AddViewController: UIViewController {
         let _ = navigationController?.popViewController(animated: true)
     }
     
+    /// Checks database for a specific recipe.
+    ///
+    /// - Parameters:
+    ///     - name: Name of the recipe.
+    ///     - type: Type of the ingredient.
+    ///     - ingr: Ingredients of the recipe.
+    ///     - servings: Servings of the recipe
+    ///     - prep: Preparation time of the recipe.
+    /// - Returns: true if the recipe exists in the database, false if otherwise.
     func fetchEvent(name:String, type:String, ingr:String, servings:Int16, prep:Int16) -> Bool {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)
@@ -211,7 +240,7 @@ class AddViewController: UIViewController {
         return false
     }
     
-    // Compresses the ingredients class array into a string with '``' as the delimiter.
+    /// Compresses the ingredients class array into a string with '``' as the delimiter.
     func compress_ingredient() -> String {
         print(ingredients.count)
         var ingredients_str = ""
