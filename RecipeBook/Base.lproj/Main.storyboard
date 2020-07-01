@@ -444,32 +444,32 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cheesecake" translatesAutoresizingMaskIntoConstraints="NO" id="G5Y-dj-W7n">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="vO3-ek-6oM">
-                                <rect key="frame" x="25" y="103" width="364" height="135"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vO3-ek-6oM">
+                                <rect key="frame" x="15" y="103" width="384" height="135"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FgA-Ba-wwE">
-                                        <rect key="frame" x="0.0" y="0.0" width="234" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="279" height="135"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X16-el-OvJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="234" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ho-IP-7ZZ">
-                                                <rect key="frame" x="0.0" y="36.5" width="234" height="26"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="279" height="26"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-Lf-2NA">
-                                                <rect key="frame" x="0.0" y="72.5" width="234" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="72.5" width="279" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-1F-0s0">
-                                                <rect key="frame" x="0.0" y="109" width="234" height="26"/>
+                                                <rect key="frame" x="0.0" y="109" width="279" height="26"/>
                                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cQO-1d-g3K">
-                                        <rect key="frame" x="264" y="0.0" width="100" height="135"/>
+                                        <rect key="frame" x="284" y="0.0" width="100" height="135"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dzS-4T-7RJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -533,8 +533,8 @@
                         <constraints>
                             <constraint firstItem="cvK-SI-mi5" firstAttribute="bottom" secondItem="E0K-Lu-yZK" secondAttribute="bottom" id="2Kb-jP-ZQK"/>
                             <constraint firstItem="G5Y-dj-W7n" firstAttribute="trailing" secondItem="E0K-Lu-yZK" secondAttribute="trailing" id="6Ug-Xj-wTx"/>
-                            <constraint firstItem="E0K-Lu-yZK" firstAttribute="trailing" secondItem="vO3-ek-6oM" secondAttribute="trailing" constant="25" id="9xw-lR-9xd"/>
-                            <constraint firstItem="vO3-ek-6oM" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" constant="25" id="9zT-Qf-YWL"/>
+                            <constraint firstItem="E0K-Lu-yZK" firstAttribute="trailing" secondItem="vO3-ek-6oM" secondAttribute="trailing" constant="15" id="9xw-lR-9xd"/>
+                            <constraint firstItem="vO3-ek-6oM" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" constant="15" id="9zT-Qf-YWL"/>
                             <constraint firstItem="cvK-SI-mi5" firstAttribute="trailing" secondItem="E0K-Lu-yZK" secondAttribute="trailing" id="S3J-Ej-qeR"/>
                             <constraint firstItem="G5Y-dj-W7n" firstAttribute="leading" secondItem="E0K-Lu-yZK" secondAttribute="leading" id="UI2-1s-O84"/>
                             <constraint firstItem="vO3-ek-6oM" firstAttribute="top" secondItem="E0K-Lu-yZK" secondAttribute="top" constant="15" id="W2K-rD-wTl"/>
