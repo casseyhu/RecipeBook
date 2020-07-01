@@ -491,6 +491,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rc-QA-ehT">
                                                 <rect key="frame" x="0.0" y="107" width="100" height="30"/>
                                                 <state key="normal" title="Convert"/>
+                                                <connections>
+                                                    <segue destination="o06-i9-RnN" kind="show" id="Oxp-EV-wo6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -727,22 +730,22 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-VQ-e7U">
-                                <rect key="frame" x="41" y="113" width="332.5" height="76"/>
+                                <rect key="frame" x="15" y="113" width="384" height="700"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SSe-dI-fKf" userLabel="recipe">
-                                        <rect key="frame" x="0.0" y="0.0" width="332.5" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="29"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-ip-s7T">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="29"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-e4-GkY">
-                                                <rect key="frame" x="76.5" y="0.0" width="256" height="29"/>
+                                                <rect key="frame" x="83.5" y="0.0" width="300.5" height="29"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7r-XT-l0h">
-                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="29"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="300.5" height="29"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                                         <state key="normal" title="Choose a recipe">
@@ -757,37 +760,87 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-ql-cRh" userLabel="conversion">
-                                        <rect key="frame" x="0.0" y="44" width="332.5" height="32"/>
+                                        <rect key="frame" x="0.0" y="44" width="384" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversion Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Px-Gu-Ppn">
-                                                <rect key="frame" x="0.0" y="0.0" width="153.5" height="32"/>
-                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="32"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k54-g8-foz">
-                                                <rect key="frame" x="168.5" y="0.0" width="55" height="32"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="97.5" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="uVK-a2-8KH">
-                                                <rect key="frame" x="238.5" y="0.0" width="94" height="32"/>
+                                                <rect key="frame" x="290" y="0.0" width="94" height="32"/>
                                                 <connections>
                                                     <action selector="clicked_stepper:" destination="o06-i9-RnN" eventType="valueChanged" id="4gp-hu-dhX"/>
                                                 </connections>
                                             </stepper>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re9-T9-j9H">
+                                        <rect key="frame" x="0.0" y="91" width="384" height="19"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2n-2b-sc9">
+                                        <rect key="frame" x="0.0" y="125" width="384" height="19"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WGK-w2-2CO">
+                                        <rect key="frame" x="0.0" y="159" width="384" height="541"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="h6M-4o-jL3" detailTextLabel="C49-Pg-EZF" rowHeight="60" style="IBUITableViewCellStyleValue1" id="5m5-7O-NmH">
+                                                <rect key="frame" x="0.0" y="28" width="384" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5m5-7O-NmH" id="rVr-gT-Csh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h6M-4o-jL3">
+                                                            <rect key="frame" x="20" y="22" width="51.5" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C49-Pg-EZF">
+                                                            <rect key="frame" x="302.5" y="22" width="61.5" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="WGK-w2-2CO" secondAttribute="bottom" id="J3x-Wr-Foj"/>
+                                    <constraint firstAttribute="trailing" secondItem="WGK-w2-2CO" secondAttribute="trailing" id="Tek-Tn-SgX"/>
+                                    <constraint firstItem="WGK-w2-2CO" firstAttribute="leading" secondItem="gy9-VQ-e7U" secondAttribute="leading" id="isO-5c-zZy"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Dci-SJ-Nja" firstAttribute="bottom" secondItem="gy9-VQ-e7U" secondAttribute="bottom" id="5cE-3X-Gth"/>
                             <constraint firstItem="Dci-SJ-Nja" firstAttribute="bottom" secondItem="Sh1-gc-znK" secondAttribute="bottom" id="6DI-Vi-vG1"/>
+                            <constraint firstItem="gy9-VQ-e7U" firstAttribute="top" secondItem="Dci-SJ-Nja" secondAttribute="top" constant="25" id="8G9-J4-NO9"/>
                             <constraint firstItem="Sh1-gc-znK" firstAttribute="leading" secondItem="Dci-SJ-Nja" secondAttribute="leading" id="8QO-OP-xJT"/>
+                            <constraint firstItem="Dci-SJ-Nja" firstAttribute="trailing" secondItem="gy9-VQ-e7U" secondAttribute="trailing" constant="15" id="H3P-2m-ABf"/>
                             <constraint firstItem="Sh1-gc-znK" firstAttribute="top" secondItem="Dci-SJ-Nja" secondAttribute="top" id="SPz-cN-5nN"/>
-                            <constraint firstItem="gy9-VQ-e7U" firstAttribute="centerX" secondItem="KZV-gt-qCJ" secondAttribute="centerX" id="a3A-wa-aN8"/>
-                            <constraint firstItem="gy9-VQ-e7U" firstAttribute="top" secondItem="Dci-SJ-Nja" secondAttribute="top" constant="25" id="kzv-OL-QuU"/>
+                            <constraint firstItem="gy9-VQ-e7U" firstAttribute="leading" secondItem="Dci-SJ-Nja" secondAttribute="leading" constant="15" id="ZPK-dG-lOu"/>
                             <constraint firstItem="Dci-SJ-Nja" firstAttribute="trailing" secondItem="Sh1-gc-znK" secondAttribute="trailing" id="oe8-6G-gLm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dci-SJ-Nja"/>
@@ -796,6 +849,8 @@
                     <connections>
                         <outlet property="conversion_rate" destination="k54-g8-foz" id="b75-i1-cHJ"/>
                         <outlet property="conversion_stepper" destination="uVK-a2-8KH" id="1oM-P0-GSs"/>
+                        <outlet property="ingredient_table" destination="WGK-w2-2CO" id="UDp-Me-L6b"/>
+                        <outlet property="prep_time" destination="Re9-T9-j9H" id="PqZ-hI-BNc"/>
                         <outlet property="recipe_button" destination="a7r-XT-l0h" id="7Tk-OW-eUf"/>
                         <outlet property="recipe_stack" destination="tCc-e4-GkY" id="dsb-1v-xpN"/>
                     </connections>
@@ -806,7 +861,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vic-K7-K6t"/>
+        <segue reference="Oxp-EV-wo6"/>
+        <segue reference="UTF-Us-dDN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cheesecake" width="1530" height="2295.5"/>

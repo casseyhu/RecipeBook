@@ -19,20 +19,30 @@ class ConverterViewController: UIViewController {
     @IBOutlet weak var conversion_stepper: UIStepper!
     @IBOutlet weak var recipe_stack: UIStackView!
     @IBOutlet weak var recipe_button: UIButton!
+    @IBOutlet weak var ingredient_table: UITableView!
+    @IBOutlet weak var prep_time: UILabel!
     
     
     
     var recipes = [Recipe]()
     var recipe_name_buttons = [UIButton]()
-//    var current_recipe:Recipe?
+    var current_recipe:Recipe?
+    var current_recipe_ingredients = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-
+        ingredient_table.delegate = self
+        ingredient_table.dataSource = self
         loadDataFromDatabase()
         initRecipeDropdown()
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = UIColor.clear
+        ingredient_table.tableFooterView = footer
+        if current_recipe != nil {
+            recipe_button.setTitle(current_recipe?.name!, for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +100,22 @@ class ConverterViewController: UIViewController {
         }
         recipe_button.setTitle(title, for: .normal)
         recipe_click()
+        current_recipe = recipes[recipe_name_buttons.firstIndex(of: sender!)!]
+        loadIngredients(ingredString: (current_recipe?.ingredients)!)
+        prep_time.text = "Prep Time: \((current_recipe?.prep)!) mins"
+    }
+    
+    func loadIngredients(ingredString: String){
+        current_recipe_ingredients = [String]()
+        let dummyIngred = ingredString.components(separatedBy: "``")
+        for elem in dummyIngred {
+            if(elem == "") {
+                break
+            }
+            print(elem)
+            current_recipe_ingredients.append(elem)
+        }
+        ingredient_table.reloadData()
     }
     
     /*
@@ -109,7 +135,51 @@ class ConverterViewController: UIViewController {
     @IBAction func clicked_stepper(_ sender: UIStepper) {
         let val = Double(round(10 * sender.value)/10)
         conversion_rate.text = String(val)
+        
+        ingredient_table.reloadData()
     }
     
 
 }
+
+extension ConverterViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
+        tableView.deselectRow(at:indexPath, animated:true)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return current_recipe_ingredients.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
+        let ingredient = current_recipe_ingredients[indexPath.row].components(separatedBy: "`")
+        cell.textLabel?.text = ingredient[0]
+        cell.detailTextLabel?.text = ingredient[1]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let context = PersistenceService.context
+            current_recipe_ingredients.remove(at: indexPath.row)
+            do {
+                try context.save()
+            } catch {
+                print("Error saving context: Deleting ingredient")
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+}
+
