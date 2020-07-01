@@ -88,8 +88,7 @@ class AddViewController: UIViewController {
     // '+' Button listener in adding a new ingredient to a recipe.
     @IBAction func addIngredient(_ sender: Any) {
         print("Adding ingredient")
-        let validIngredients = checkIngredientInput()
-        if validIngredients {
+        if checkTextInput([ingredient_name, ingredient_qty]) {
             ingredients.append(ingredient_name.text! + "`" + ingredient_qty.text!)
             tableView.reloadData()
             ingredient_name.text = ""
@@ -97,31 +96,22 @@ class AddViewController: UIViewController {
         }
     }
     
-    // Checks if there's a provided ingredient name and quantity. If either is missing, shake the UITextFields to indicate a missing element.
-    func checkIngredientInput() -> Bool {
+    // Checks if text fields are empty. If the textfield is empty, shake the UITextFields to indicate a missing element.
+    func checkTextInput(_ txtFields:[UITextField]) -> Bool {
         var valid:Bool = true
-        if ingredient_name.text == "" {
-            errorShake(textField: ingredient_name)
-            ingredient_name.layer.borderColor = UIColor.red.cgColor
-            ingredient_name.layer.borderWidth = 1.0
-            valid = false
-        }
-        else {
-            ingredient_name.layer.borderColor = UIColor.black.cgColor
-            ingredient_name.layer.borderWidth = 0
-        }
-        if ingredient_qty.text == "" {
-            ingredient_qty.layer.borderColor = UIColor.red.cgColor
-            ingredient_qty.layer.borderWidth = 1.0
-            errorShake(textField: ingredient_qty)
-            valid = false
-        }
-        else {
-            ingredient_qty.layer.borderColor = UIColor.black.cgColor
-            ingredient_qty.layer.borderWidth = 0
+        for txtField in txtFields {
+            if txtField.text == "" {
+                errorShake(textField: txtField)
+                txtField.layer.borderColor = UIColor.red.cgColor
+                txtField.layer.borderWidth = 1.0
+                valid = false
+            }
+            else {
+                txtField.layer.borderColor = UIColor.black.cgColor
+                txtField.layer.borderWidth = 0
+            }
         }
         return valid
-        
     }
     
     // Shake animation on a UITextField and highlights the borders red.
@@ -168,6 +158,9 @@ class AddViewController: UIViewController {
     
     // Saves a recipe into database or update if recipe name already exists
     @IBAction func saveRecipe(_ sender: Any) {
+        if !checkTextInput([recipe_name, serving_size, prep_time]) {
+            return
+        }
         var name:String!, type:String!
         var servings:Int16!, prep:Int16!
         
@@ -225,7 +218,6 @@ class AddViewController: UIViewController {
         for ingred in ingredients {
             ingredients_str += ingred + "``"
         }
-        print(ingredients_str)
         return ingredients_str
     }
     
@@ -266,7 +258,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         }
     }
-    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
