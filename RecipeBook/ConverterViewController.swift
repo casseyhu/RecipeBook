@@ -27,7 +27,10 @@ class ConverterViewController: UIViewController {
     var recipes = [Recipe]()
     var recipe_name_buttons = [UIButton]()
     var current_recipe:Recipe?
+    var convert_rate:Double?
     var current_recipe_ingredients = [String]()
+    var ingredient_qty = [Double]()
+    var original_units = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,22 +108,9 @@ class ConverterViewController: UIViewController {
         prep_time.text = "Prep Time: \((current_recipe?.prep)!) mins"
     }
     
-    func loadIngredients(ingredString: String){
-        current_recipe_ingredients = [String]()
-        let dummyIngred = ingredString.components(separatedBy: "``")
-        for elem in dummyIngred {
-            if(elem == "") {
-                break
-            }
-            print(elem)
-            current_recipe_ingredients.append(elem)
-        }
-        ingredient_table.reloadData()
-    }
     
-    /*
-     Load tasks from the Recipe database
-     */
+    // MARK: - Load data methods
+
     func loadDataFromDatabase() {
         recipes = [Recipe]()
         let context = PersistenceService.persistentContainer.viewContext
@@ -132,13 +122,122 @@ class ConverterViewController: UIViewController {
         }
     }
     
+    func loadIngredients(ingredString: String){
+        current_recipe_ingredients = [String]()
+        let dummyIngred = ingredString.components(separatedBy: "``")
+        for elem in dummyIngred {
+            if(elem == "") {
+                break
+            }
+            print(elem)
+            current_recipe_ingredients.append(elem)
+        }
+        ingredient_table.reloadData()
+        loadIngredientQuantities()
+    }
+    
+    func loadIngredientQuantities(){
+        ingredient_qty = [Double]()
+        original_units = [String]()
+        for rec in current_recipe_ingredients {
+            var arr = rec.components(separatedBy: "`")
+            let qty = arr[1]
+            var qtyVal = getQtyValue(qtyString: qty)
+            if(qtyVal == nil) {
+                ingredient_qty.append(-1.0)
+            }
+            else {
+                ingredient_qty.append(qtyVal!)
+            }
+        }
+    }
+    
+    func getQtyValue(qtyString: String) -> Double? {
+        var quant = ""
+        var unit = ""
+        for char in qtyString {
+            if ( (char >= "0" && char <= "9") || char == "." || char == "/" ) {
+                quant += [char]
+            }
+            else {
+                unit += [char]
+            }
+        }
+        if quant.count == 0 {
+            // for example, ingredient with all chars/just a string
+            original_units.append("")
+            return nil
+        }
+        original_units.append(unit)
+        if quant.contains("/"){
+            let split = quant.components(separatedBy: "/")
+            let div = Double( Double(split[0])! / Double(split[1])! )
+            let divFormat = String(format: "%.2f", div)
+            let ret = Double(divFormat)
+            return ret
+        }
+        else {
+            let quantAsDouble = Double(quant)
+            let formatted = String(format: "%.2f", quantAsDouble!)
+            let ret = Double(formatted)
+            return ret
+        }
+    }
+    
+    // MARK: - Stepper listener
     @IBAction func clicked_stepper(_ sender: UIStepper) {
         let val = Double(round(10 * sender.value)/10)
         conversion_rate.text = String(val)
         
+        convert_rate = val
+        adjustIngredients()
         ingredient_table.reloadData()
     }
     
+    
+    // MARK: - Ingredient Adjust function
+
+    func adjustIngredients() {
+        if convert_rate != nil, current_recipe != nil{
+            print("test")
+            let ingredString = current_recipe!.ingredients
+            let ingredArr = ingredString!.components(separatedBy: "``")
+            var ingredNameArr = [String]()
+            var originalQtyArr = [String]()
+            for elem in ingredArr {
+                if elem == "" {
+                    break
+                }
+                let splitIngredient = elem.components(separatedBy: "`")
+                ingredNameArr.append(splitIngredient[0]) // appends just the name of ingredient to the name arr
+                originalQtyArr.append(splitIngredient[1])
+            }
+            
+            var newIngredQty = [Double]()
+            for indx in 0...ingredient_qty.count-1 {
+                if ingredient_qty[indx] >= 0 {
+                    newIngredQty.append(ingredient_qty[indx] * convert_rate!)
+                } else {
+                    newIngredQty.append(-1.0)
+                }
+            }
+            
+            print(original_units)
+            current_recipe_ingredients = [String]()
+            for indx in 0...ingredNameArr.count-1{
+                var recipeString = ""
+                if newIngredQty[indx] >= 0 {
+                    recipeString += ingredNameArr[indx] + "`" + String(format: "%.2f", newIngredQty[indx]) + original_units[indx]
+                    print("New adjusted recipe string \(recipeString)")
+                } else {
+                    recipeString += ingredNameArr[indx] + "`" + originalQtyArr[indx] + original_units[indx]
+                }
+                current_recipe_ingredients.append(recipeString)
+            }
+        }
+        ingredient_table.reloadData()
+        
+    }
 
 }
 
