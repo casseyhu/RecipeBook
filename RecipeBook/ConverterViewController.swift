@@ -211,7 +211,7 @@ class ConverterViewController: UIViewController {
                 ingredNameArr.append(splitIngredient[0])
                 originalQtyArr.append(splitIngredient[1])
             }
-
+            
             print(original_units)
             current_recipe_ingredients = [String]()
             for indx in 0...ingredNameArr.count-1{

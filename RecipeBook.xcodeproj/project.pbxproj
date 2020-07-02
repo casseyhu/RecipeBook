@@ -87,12 +87,12 @@
 				88525E1224A68D4600067192 /* MainRecipeCell.swift */,
 				88525E1424A8250100067192 /* RecipeItemViewController.swift */,
 				88525E0C24A59C2900067192 /* PersistenceService.swift */,
+				8818999424AD8DEB0078362D /* UIButtonExtensions.swift */,
 				88525DF524A5571600067192 /* Main.storyboard */,
 				88525DFB24A5571900067192 /* Assets.xcassets */,
 				88525DFD24A5571900067192 /* LaunchScreen.storyboard */,
 				88525E0024A5571900067192 /* Info.plist */,
 				88525DF824A5571600067192 /* RecipeBook.xcdatamodeld */,
-				8818999424AD8DEB0078362D /* UIButtonExtensions.swift */,
 			);
 			path = RecipeBook;
 			sourceTree = "<group>";
