@@ -38,6 +38,9 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Load recipes from database
+    
+    /// Fetches all recipse from core data based on sort settings.
     func loadDataFromDatabase() {
         let request = NSFetchRequest<Recipe>(entityName: "Recipe")
         let settings = UserDefaults.standard
@@ -53,6 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Listener to change the editing status of tableView.
     @IBAction func editList(_ sender: UIBarButtonItem) {
         if(self.tableView.isEditing == true) {
             self.tableView.isEditing = false
@@ -66,24 +70,24 @@ class ViewController: UIViewController {
 
 
 
-/*
- Table View Delegate for selecting a row
- Pushes RecipeViewController's view onto the nav stack to display.
- Sets the var 'recipe' of RecipeViewController to hold a reference to the selected Recipe object.
- */
-extension ViewController: UITableViewDelegate {
+// MARK: - TableView methods
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    /*
+     Table View Delegate for selecting a row
+     Pushes RecipeViewController's view onto the nav stack to display.
+     Sets the var 'recipe' of RecipeViewController to hold a reference to the selected Recipe object.
+     */
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "add") as! RecipeItemViewController
         vc.title = recipes[indexPath.row].name!
         vc.recipe = recipes[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
-}
-
-/*
- Table View Data Source to display recipes
- */
-extension ViewController: UITableViewDataSource {
+    
+    /*
+    Table View Data Source to display recipes
+    */
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

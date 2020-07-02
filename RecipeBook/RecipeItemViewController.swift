@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+/**
+    Recipe View Controller: Displays the details of the current recipe. Allows for editing the recipe and converting the servings
+ */
 class RecipeItemViewController: UIViewController {
 
     @IBOutlet weak var recipe_name: UILabel!
@@ -27,13 +30,13 @@ class RecipeItemViewController: UIViewController {
         let footer = UIView(frame: .zero)
         footer.backgroundColor = UIColor.clear
         ingredient_table.tableFooterView = footer
-    
-//        setupRecipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupRecipe()
     }
+    
+    // MARK: - Display up-to-date recipe
     
     // Setup recipe table with up to date ingredients
     func setupRecipe() {
@@ -123,6 +126,7 @@ class RecipeItemViewController: UIViewController {
 
 }
 
+// MARK: - TableView methods
 extension RecipeItemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
         tableView.deselectRow(at:indexPath, animated:true)

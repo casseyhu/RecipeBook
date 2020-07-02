@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 
-
+/**
+    Converter Tab View Controller. Enables users to convert recipe ingredients based on new serving size
+ */
 class ConverterViewController: UIViewController {
 
     @IBOutlet weak var conversion_rate: UITextField!
@@ -48,6 +50,8 @@ class ConverterViewController: UIViewController {
         loadDataFromDatabase()
         initRecipeDropdown()
     }
+    
+    // MARK: - Handle Recipe Selection
     
     /// Sets up the stackview dropdown menu for selecting a recipe.
     ///
@@ -104,6 +108,7 @@ class ConverterViewController: UIViewController {
         current_recipe = recipes[recipe_name_buttons.firstIndex(of: sender!)!]
         loadIngredients(ingredString: (current_recipe?.ingredients)!)
         prep_time.text = "Prep Time: \((current_recipe?.prep)!) mins"
+        conversion_rate.placeholder = "\((current_recipe?.servings)!) servings"
     }
     
     
@@ -175,9 +180,9 @@ class ConverterViewController: UIViewController {
         }
     }
     
-    // MARK: - Stepper listener
+    // MARK: - Conversion listener
     
-    /// Listener for the stepper (- / +). Increments and decrements by 0.1. Updates ingredient quantities multiplicatively upon press.
+    /// Listener for the convert button. Updates ingredient quantities based on new serving size.
     @IBAction func clickedConvert(_ sender: UIButton) {
         sender.pulsate()
         if let convert = Double(conversion_rate.text!) {
@@ -227,6 +232,7 @@ class ConverterViewController: UIViewController {
 
 }
 
+// MARK: - TableView methods
 extension ConverterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
         tableView.deselectRow(at:indexPath, animated:true)
@@ -240,6 +246,7 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource {
         return current_recipe_ingredients.count
     }
     
+    /// Updates tableview cell with ingredient name and quantity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         let ingredient = current_recipe_ingredients[indexPath.row].components(separatedBy: "`")

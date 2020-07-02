@@ -34,11 +34,14 @@ class SettingViewController: UIViewController {
             "SortAscending"), animated: true)
     }
     
-    // Handles selection for sort order
+    // MARK: - Sort Handlers
+    
+    /// Handles selection for sort order
     @IBAction func handleSortSelection(_ sender: UIButton) {
         sort_click()
     }
     
+    /// Show/hide dropdown buttons when sort order button is clicked
     func sort_click() {
         sortButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
@@ -48,6 +51,7 @@ class SettingViewController: UIViewController {
         }
     }
     
+    /// Handles selection of sort type and updates sort order
     @IBAction func sortOrderTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle, let type = SortOrder(rawValue: title) else {
             return
@@ -60,6 +64,7 @@ class SettingViewController: UIViewController {
         sort_click()
     }
     
+    /// Handles toggle for sort ascending/descending.
     @IBAction func sortAscendingToggle(_ sender: UISwitch) {
         let settings = UserDefaults.standard
         settings.set(sender.isOn, forKey: "SortAscending")

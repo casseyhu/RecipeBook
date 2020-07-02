@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 
-/// Add recipe ViewController. Controls the events that happen when the user presses the add (+) button in the Recipes tab.
-/// Adds new recipe to database.
+/**
+    Add Recipe ViewController: Controls the events that happen when the user presses the add (+) button in the Recipes tab.
+    Adds new recipe to database.
+ */
 
 class AddViewController: UIViewController {
 
@@ -66,11 +68,12 @@ class AddViewController: UIViewController {
         }
     }
     
+    // MARK: - Load and add ingredient to tableView
+    
     /// Formats the ingredients from X`Y`` into the 'ingredients' class var to load into UITableView.
     ///
     /// - Parameters:
     ///      - ingredString: Ingredients for the recipe in the format of Eggs`2x`` with '`' and '``' as delimiters.
-    
     func loadIngredients(ingredString: String){
         let dummyIngred = ingredString.components(separatedBy: "``")
         for elem in dummyIngred {
@@ -85,7 +88,7 @@ class AddViewController: UIViewController {
         tableView.reloadData()
     }
     
-    /// Listener to add a new recipe.
+    /// Listener to add a new ingredient to the list.
     @IBAction func addIngredient(_ sender: Any) {
         print("Adding ingredient")
         if checkTextInput([ingredient_name, ingredient_qty]) {
@@ -96,7 +99,7 @@ class AddViewController: UIViewController {
         }
     }
     
-    /// Checks for valid user input for text fields in adding/editing recipies.
+    /// Checks for valid user input for text fields in adding/editing recipes.
     /// - Parameters:
     ///     - txtFields: Array of the UITextField elements on the UI.
     /// - Returns: Bool indicating if the inputs were well formatted, false otherwise.
@@ -108,8 +111,7 @@ class AddViewController: UIViewController {
                 txtField.layer.borderColor = UIColor.red.cgColor
                 txtField.layer.borderWidth = 1.0
                 valid = false
-            }
-            else {
+            } else {
                 txtField.layer.borderColor = UIColor.black.cgColor
                 txtField.layer.borderWidth = 0
             }
@@ -130,6 +132,8 @@ class AddViewController: UIViewController {
         animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 8, y: textField.center.y))
         textField.layer.add(animation, forKey: "position")
     }
+    
+    // MARK: - Handle recipe type selection
     
     /// Handles selection for recipe type
     @IBAction func handleTypeSelection(_ sender: UIButton) {
@@ -158,6 +162,8 @@ class AddViewController: UIViewController {
         type_click()
     }
     
+    // MARK: - Stepper Handler
+    
     /// Stepper listener. Increments/decrements by 1.
     ///
     /// - Parameters:
@@ -170,6 +176,8 @@ class AddViewController: UIViewController {
             prep_time.text = String(sender.value)
         }
     }
+    
+    // MARK: - Update existing or add new recipe to database
     
     /// Saves a recipe into database or updates if recipe name already exists.
     ///
@@ -251,7 +259,7 @@ class AddViewController: UIViewController {
     
 }
 
-
+// MARK: - TableView methods
 extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath) {
         tableView.deselectRow(at:indexPath, animated:true)

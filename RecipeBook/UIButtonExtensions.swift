@@ -8,8 +8,12 @@
 
 import UIKit
 
-
+/**
+    UIButton extension to perform animations
+ */
 extension UIButton {
+    
+    /// Perform pulsating animation for a button
     func pulsate() {
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.5

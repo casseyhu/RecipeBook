@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+    Class that updates the recipe cell based on the recipe details.
+ */
 class MainRecipeCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
