@@ -14,7 +14,6 @@ import CoreData
 
 class AddViewController: UIViewController {
 
-    
     @IBOutlet weak var recipe_name: UITextField!
     @IBOutlet weak var serving_size: UITextField!
     @IBOutlet weak var prep_time: UITextField!
@@ -39,7 +38,6 @@ class AddViewController: UIViewController {
         case dinner = "Dinner"
         case other = "Other"
     }
-
     
     var currentRecipe: Recipe?
     var ingredients = [String]()
@@ -210,7 +208,7 @@ class AddViewController: UIViewController {
         let _ = navigationController?.popViewController(animated: true)
     }
     
-    /// Checks database for a specific recipe.
+    /// Checks database for a specific recipe name and updates the recipe in the database if it exists
     ///
     /// - Parameters:
     ///     - name: Name of the recipe.

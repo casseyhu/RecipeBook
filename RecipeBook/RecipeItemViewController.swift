@@ -28,14 +28,14 @@ class RecipeItemViewController: UIViewController {
         footer.backgroundColor = UIColor.clear
         ingredient_table.tableFooterView = footer
     
-        setupRecipe()
+//        setupRecipe()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupRecipe()
     }
     
-    
+    // Setup recipe table with up to date ingredients
     func setupRecipe() {
         ingredients = [String]()
         if fetchRecipe(name: (recipe?.name)!) {
@@ -64,6 +64,7 @@ class RecipeItemViewController: UIViewController {
         return false
     }
     
+    // Set recipe image based on category/type
     func setImage() {
         let category = recipe?.type
         switch category {

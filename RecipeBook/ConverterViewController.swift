@@ -12,15 +12,11 @@ import CoreData
 
 class ConverterViewController: UIViewController {
 
-    
     @IBOutlet weak var conversion_rate: UITextField!
-    @IBOutlet weak var conversion_stepper: UIStepper!
     @IBOutlet weak var recipe_stack: UIStackView!
     @IBOutlet weak var recipe_button: UIButton!
     @IBOutlet weak var ingredient_table: UITableView!
     @IBOutlet weak var prep_time: UILabel!
-    
-    
     
     var recipes = [Recipe]()
     var recipe_name_buttons = [UIButton]()
@@ -32,8 +28,6 @@ class ConverterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         ingredient_table.delegate = self
         ingredient_table.dataSource = self
         loadDataFromDatabase()
@@ -41,11 +35,12 @@ class ConverterViewController: UIViewController {
         let footer = UIView(frame: .zero)
         footer.backgroundColor = UIColor.clear
         ingredient_table.tableFooterView = footer
+        
         if current_recipe != nil {
             recipe_button.setTitle(current_recipe?.name!, for: .normal)
             loadIngredients(ingredString: (current_recipe?.ingredients)!)
             prep_time.text = "Prep Time: \((current_recipe?.prep)!) mins"
-            
+            conversion_rate.placeholder = "\((current_recipe?.servings)!) servings"
         }
     }
     
@@ -56,9 +51,9 @@ class ConverterViewController: UIViewController {
     
     /// Sets up the stackview dropdown menu for selecting a recipe.
     ///
-    /// After grabbing all the Recipe objects from the db, we create a button for each recipe with the title being the Recipe's name. We take this button and add
-    /// it to the stackview for the dropdown: 'recipe_stack'. The new buttons will all be initially hidden and their action listeners/target will be set to the
-    /// recipeTapped() function.
+    /// After grabbing all the Recipe objects from the db, we create a button for each recipe with the title being the Recipe's name.
+    /// We take this button and add it to the stackview for the dropdown: 'recipe_stack'. The new buttons will all be initially hidden
+    /// and their action listeners/target will be set to the recipeTapped() function.
     func initRecipeDropdown() {
         recipe_name_buttons = [UIButton]()
         recipe_stack.alignment = .fill
@@ -83,7 +78,6 @@ class ConverterViewController: UIViewController {
     /// - Parameters:
     ///     - sender: UIButton for the stackview dropdown.
     @IBAction func handleRecipeSelection(_ sender: Any) {
-        print("Clicked choose recipe")
         recipe_click()
     }
     
@@ -147,15 +141,9 @@ class ConverterViewController: UIViewController {
         ingredient_qty = [Double]()
         original_units = [String]()
         for rec in current_recipe_ingredients {
-            var arr = rec.components(separatedBy: "`")
-            let qty = arr[1]
-            var qtyVal = getQtyValue(qtyString: qty)
-            if(qtyVal == nil) {
-                ingredient_qty.append(-1.0)
-            }
-            else {
-                ingredient_qty.append(qtyVal!)
-            }
+            let qty = rec.components(separatedBy: "`")[1]
+            let qtyVal = getQtyValue(qtyString: qty)
+            ingredient_qty.append(qtyVal ?? -1.0)
         }
     }
     
@@ -166,8 +154,7 @@ class ConverterViewController: UIViewController {
         for char in qtyString {
             if ( (char >= "0" && char <= "9") || char == "." || char == "/" ) {
                 quant += [char]
-            }
-            else {
+            } else {
                 unit += [char]
             }
         }
@@ -181,27 +168,23 @@ class ConverterViewController: UIViewController {
             let split = quant.components(separatedBy: "/")
             let div = Double( Double(split[0])! / Double(split[1])! )
             let divFormat = String(format: "%.2f", div)
-            let ret = Double(divFormat)
-            return ret
-        }
-        else {
-            let quantAsDouble = Double(quant)
-            let formatted = String(format: "%.2f", quantAsDouble!)
-            let ret = Double(formatted)
-            return ret
+            return Double(divFormat)
+        } else {
+            let formatted = String(format: "%.2f", Double(quant)!)
+            return Double(formatted)
         }
     }
     
     // MARK: - Stepper listener
     
     /// Listener for the stepper (- / +). Increments and decrements by 0.1. Updates ingredient quantities multiplicatively upon press.
-    @IBAction func clicked_stepper(_ sender: UIStepper) {
-        let val = Double(round(10 * sender.value)/10)
-        conversion_rate.text = String(val)
-        
-        convert_rate = val
-        adjustIngredients()
-        ingredient_table.reloadData()
+    @IBAction func clickedConvert(_ sender: UIButton) {
+        sender.pulsate()
+        if let convert = Double(conversion_rate.text!) {
+            convert_rate = convert / Double((current_recipe?.servings)!)
+            adjustIngredients()
+            ingredient_table.reloadData()
+        }
     }
     
     
@@ -220,25 +203,17 @@ class ConverterViewController: UIViewController {
                     break
                 }
                 let splitIngredient = elem.components(separatedBy: "`")
-                ingredNameArr.append(splitIngredient[0]) // appends just the name of ingredient to the name arr
+                ingredNameArr.append(splitIngredient[0])
                 originalQtyArr.append(splitIngredient[1])
             }
-            
-            var newIngredQty = [Double]()
-            for indx in 0...ingredient_qty.count-1 {
-                if ingredient_qty[indx] >= 0 {
-                    newIngredQty.append(ingredient_qty[indx] * convert_rate!)
-                } else {
-                    newIngredQty.append(-1.0)
-                }
-            }
-            
+
             print(original_units)
             current_recipe_ingredients = [String]()
             for indx in 0...ingredNameArr.count-1{
                 var recipeString = ""
-                if newIngredQty[indx] >= 0 {
-                    recipeString += ingredNameArr[indx] + "`" + String(format: "%.2f", newIngredQty[indx]) + original_units[indx]
+                let newQty = ingredient_qty[indx] * convert_rate!
+                if newQty >= 0 {
+                    recipeString += ingredNameArr[indx] + "`" + String(format: "%.2f", newQty) + original_units[indx]
                     print("New adjusted recipe string \(recipeString)")
                 } else {
                     recipeString += ingredNameArr[indx] + "`" + originalQtyArr[indx] + original_units[indx]
