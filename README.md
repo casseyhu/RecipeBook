@@ -28,7 +28,7 @@ Gives users the option to sort the recipe list by name, serving size, and prep t
 Compact UI for users to enter the name, type of, serving size, prep time, and ingredients of a new recipe. Users are required to fill all required fields for a new recipe. Pressing save persists the recipe into the Core Data of the app and brings the user back to the recipe tab screen where the new recipe can be found. 
 
 <p align="center">
-<img src="images/empty_add.png" height=500 hspace="20">   <img src="images/adding.png" height=500 hspace="20">
+<img src="images/empty_add.png" height=500 hspace="20">   <img src="images/choose_add.png" height=500 hspace="20">   <img src="images/adding.png" height=500 hspace="20">
 </p>
 
 ### Recipe View Screen
