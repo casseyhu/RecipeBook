@@ -198,10 +198,17 @@ class AddViewController: UIViewController {
         }
         if let serving = Double(serving_size.text!) {
             servings = Int16(serving)
+        } else {
+            errorShake(textField: serving_size)
+            return
         }
         if let p = Double(prep_time.text!) {
             prep = Int16(p)
+        } else {
+            errorShake(textField: prep_time)
+            return
         }
+        
         let ingred = compress_ingredient()
         print("Saving recipe- ingredints: \(ingred)")
         if !fetchEvent(name: name, type: type, ingr: ingred, servings: servings, prep: prep) {
