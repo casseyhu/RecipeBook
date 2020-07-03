@@ -134,7 +134,6 @@ class ConverterViewController: UIViewController {
             if(elem == "") {
                 break
             }
-            print(elem)
             current_recipe_ingredients.append(elem)
         }
         ingredient_table.reloadData()
@@ -185,11 +184,33 @@ class ConverterViewController: UIViewController {
     /// Listener for the convert button. Updates ingredient quantities based on new serving size.
     @IBAction func clickedConvert(_ sender: UIButton) {
         sender.pulsate()
-        if let convert = Double(conversion_rate.text!) {
-            convert_rate = convert / Double((current_recipe?.servings)!)
-            adjustIngredients()
-            ingredient_table.reloadData()
+        if recipe_button.titleLabel!.text! != "Choose a recipe" {
+            if let convert = Double(conversion_rate.text!) {
+                conversion_rate.layer.borderColor = UIColor.black.cgColor
+                conversion_rate.layer.borderWidth = 1.0
+                convert_rate = convert / Double((current_recipe?.servings)!)
+                adjustIngredients()
+                ingredient_table.reloadData()
+                return
+            }
         }
+        errorShake(textField: conversion_rate)
+    }
+    
+    /// Shake animation on a UITextField. Highlights the borders red.
+    ///
+    /// - Parameters:
+    ///     - textField: Textfield to shake.
+    func errorShake(textField: UITextField){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.08
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 8, y: textField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 8, y: textField.center.y))
+        textField.layer.add(animation, forKey: "position")
+        textField.layer.borderColor = UIColor.red.cgColor
+        textField.layer.borderWidth = 1.0
     }
     
     
@@ -198,7 +219,6 @@ class ConverterViewController: UIViewController {
     /// Adjusts ingredient quantities and updates UITableView data source. 
     func adjustIngredients() {
         if convert_rate != nil, current_recipe != nil{
-            print("test")
             let ingredString = current_recipe!.ingredients
             let ingredArr = ingredString!.components(separatedBy: "``")
             var ingredNameArr = [String]()
@@ -212,14 +232,12 @@ class ConverterViewController: UIViewController {
                 originalQtyArr.append(splitIngredient[1])
             }
             
-            print(original_units)
             current_recipe_ingredients = [String]()
             for indx in 0...ingredNameArr.count-1{
                 var recipeString = ""
                 let newQty = ingredient_qty[indx] * convert_rate!
                 if newQty >= 0 {
                     recipeString += ingredNameArr[indx] + "`" + String(format: "%.2f", newQty) + original_units[indx]
-                    print("New adjusted recipe string \(recipeString)")
                 } else {
                     recipeString += ingredNameArr[indx] + "`" + originalQtyArr[indx] + original_units[indx]
                 }
@@ -227,7 +245,6 @@ class ConverterViewController: UIViewController {
             }
         }
         ingredient_table.reloadData()
-        
     }
 
 }
@@ -254,7 +271,6 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = ingredient[1]
         return cell
     }
-    
     
 }
 
