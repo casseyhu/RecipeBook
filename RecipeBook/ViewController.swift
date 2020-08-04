@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseDatabase
 
 /**
     Recipe tab ViewController.
@@ -21,6 +22,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ref = Database.database().reference()
+        ref.child("user/username").setValue("CASSEY")
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33D10AE8B6B55B20AB1C8E7D /* Pods_RecipeBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B1681D93EA28490EB686C0 /* Pods_RecipeBook.framework */; };
 		8818999524AD8DEC0078362D /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818999424AD8DEB0078362D /* UIButtonExtensions.swift */; };
 		88525DF024A5571600067192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525DEF24A5571600067192 /* AppDelegate.swift */; };
 		88525DF224A5571600067192 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525DF124A5571600067192 /* SceneDelegate.swift */; };
@@ -23,9 +24,11 @@
 		88525E1124A59E7600067192 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */; };
 		88525E1324A68D4600067192 /* MainRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1224A68D4600067192 /* MainRecipeCell.swift */; };
 		88525E1524A8250100067192 /* RecipeItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1424A8250100067192 /* RecipeItemViewController.swift */; };
+		889E693D24D9CA6A00A50B53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889E693C24D9CA6A00A50B53 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0ED8E584E809B9F256D5DE69 /* Pods-RecipeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.release.xcconfig"; path = "Target Support Files/Pods-RecipeBook/Pods-RecipeBook.release.xcconfig"; sourceTree = "<group>"; };
 		8818999424AD8DEB0078362D /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		88525DEC24A5571600067192 /* RecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88525DEF24A5571600067192 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,9 @@
 		88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88525E1224A68D4600067192 /* MainRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecipeCell.swift; sourceTree = "<group>"; };
 		88525E1424A8250100067192 /* RecipeItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemViewController.swift; sourceTree = "<group>"; };
+		889E693C24D9CA6A00A50B53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9AA8F432D719D4EB8D201EDB /* Pods-RecipeBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.debug.xcconfig"; path = "Target Support Files/Pods-RecipeBook/Pods-RecipeBook.debug.xcconfig"; sourceTree = "<group>"; };
+		E4B1681D93EA28490EB686C0 /* Pods_RecipeBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D10AE8B6B55B20AB1C8E7D /* Pods_RecipeBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		543A8861638B3053BB18CDA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AA8F432D719D4EB8D201EDB /* Pods-RecipeBook.debug.xcconfig */,
+				0ED8E584E809B9F256D5DE69 /* Pods-RecipeBook.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		883C1E8AA9A10DEC0EA70753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4B1681D93EA28490EB686C0 /* Pods_RecipeBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		88525DE324A5571600067192 = {
 			isa = PBXGroup;
 			children = (
 				88525DEE24A5571600067192 /* RecipeBook */,
 				88525DED24A5571600067192 /* Products */,
+				543A8861638B3053BB18CDA2 /* Pods */,
+				883C1E8AA9A10DEC0EA70753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +118,7 @@
 				88525DFB24A5571900067192 /* Assets.xcassets */,
 				88525DFD24A5571900067192 /* LaunchScreen.storyboard */,
 				88525E0024A5571900067192 /* Info.plist */,
+				889E693C24D9CA6A00A50B53 /* GoogleService-Info.plist */,
 				88525DF824A5571600067192 /* RecipeBook.xcdatamodeld */,
 			);
 			path = RecipeBook;
@@ -104,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88525E0324A5571900067192 /* Build configuration list for PBXNativeTarget "RecipeBook" */;
 			buildPhases = (
+				FD10EC187AC7DEFF8852E00E /* [CP] Check Pods Manifest.lock */,
 				88525DE824A5571600067192 /* Sources */,
 				88525DE924A5571600067192 /* Frameworks */,
 				88525DEA24A5571600067192 /* Resources */,
+				ECB09E9A7801ADAD4B665227 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,12 +185,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				88525DFF24A5571900067192 /* LaunchScreen.storyboard in Resources */,
+				889E693D24D9CA6A00A50B53 /* GoogleService-Info.plist in Resources */,
 				88525DFC24A5571900067192 /* Assets.xcassets in Resources */,
 				88525DF724A5571600067192 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ECB09E9A7801ADAD4B665227 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10EC187AC7DEFF8852E00E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecipeBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88525DE824A5571600067192 /* Sources */ = {
@@ -322,6 +394,7 @@
 		};
 		88525E0424A5571900067192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AA8F432D719D4EB8D201EDB /* Pods-RecipeBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +412,7 @@
 		};
 		88525E0524A5571900067192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ED8E584E809B9F256D5DE69 /* Pods-RecipeBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
