@@ -25,6 +25,9 @@
 		88525E1324A68D4600067192 /* MainRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1224A68D4600067192 /* MainRecipeCell.swift */; };
 		88525E1524A8250100067192 /* RecipeItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525E1424A8250100067192 /* RecipeItemViewController.swift */; };
 		889E693D24D9CA6A00A50B53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 889E693C24D9CA6A00A50B53 /* GoogleService-Info.plist */; };
+		889E693F24D9D6D200A50B53 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889E693E24D9D6D200A50B53 /* TitleViewController.swift */; };
+		889E694224D9E8A400A50B53 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889E694124D9E8A400A50B53 /* SignUpViewController.swift */; };
+		889E694424D9EA8000A50B53 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889E694324D9EA8000A50B53 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		88525E1224A68D4600067192 /* MainRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRecipeCell.swift; sourceTree = "<group>"; };
 		88525E1424A8250100067192 /* RecipeItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemViewController.swift; sourceTree = "<group>"; };
 		889E693C24D9CA6A00A50B53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		889E693E24D9D6D200A50B53 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		889E694124D9E8A400A50B53 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		889E694324D9EA8000A50B53 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9AA8F432D719D4EB8D201EDB /* Pods-RecipeBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.debug.xcconfig"; path = "Target Support Files/Pods-RecipeBook/Pods-RecipeBook.debug.xcconfig"; sourceTree = "<group>"; };
 		E4B1681D93EA28490EB686C0 /* Pods_RecipeBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,12 +112,16 @@
 				88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */,
 				88525DEF24A5571600067192 /* AppDelegate.swift */,
 				88525DF124A5571600067192 /* SceneDelegate.swift */,
+				889E693E24D9D6D200A50B53 /* TitleViewController.swift */,
+				889E694124D9E8A400A50B53 /* SignUpViewController.swift */,
+				889E694324D9EA8000A50B53 /* LoginViewController.swift */,
 				88525DF324A5571600067192 /* ViewController.swift */,
 				88525E0624A58D0600067192 /* ConverterViewController.swift */,
 				88525E0824A58D1500067192 /* AddViewController.swift */,
 				88525E0A24A5974100067192 /* SettingViewController.swift */,
-				88525E1224A68D4600067192 /* MainRecipeCell.swift */,
 				88525E1424A8250100067192 /* RecipeItemViewController.swift */,
+				889E694024D9E86E00A50B53 /* View Controllers */,
+				88525E1224A68D4600067192 /* MainRecipeCell.swift */,
 				88525E0C24A59C2900067192 /* PersistenceService.swift */,
 				8818999424AD8DEB0078362D /* UIButtonExtensions.swift */,
 				88525DF524A5571600067192 /* Main.storyboard */,
@@ -122,6 +132,13 @@
 				88525DF824A5571600067192 /* RecipeBook.xcdatamodeld */,
 			);
 			path = RecipeBook;
+			sourceTree = "<group>";
+		};
+		889E694024D9E86E00A50B53 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +153,7 @@
 				88525DE924A5571600067192 /* Frameworks */,
 				88525DEA24A5571600067192 /* Resources */,
 				ECB09E9A7801ADAD4B665227 /* [CP] Embed Pods Frameworks */,
+				5DD42C7FD4BE3B29BAE5C654 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +212,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5DD42C7FD4BE3B29BAE5C654 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeBook/Pods-RecipeBook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ECB09E9A7801ADAD4B665227 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,13 +278,16 @@
 				88525DF424A5571600067192 /* ViewController.swift in Sources */,
 				88525E0D24A59C2900067192 /* PersistenceService.swift in Sources */,
 				88525DF024A5571600067192 /* AppDelegate.swift in Sources */,
+				889E693F24D9D6D200A50B53 /* TitleViewController.swift in Sources */,
 				88525E1524A8250100067192 /* RecipeItemViewController.swift in Sources */,
 				88525E1324A68D4600067192 /* MainRecipeCell.swift in Sources */,
 				88525E0924A58D1500067192 /* AddViewController.swift in Sources */,
 				88525DFA24A5571600067192 /* RecipeBook.xcdatamodeld in Sources */,
 				8818999524AD8DEC0078362D /* UIButtonExtensions.swift in Sources */,
+				889E694224D9E8A400A50B53 /* SignUpViewController.swift in Sources */,
 				88525E1124A59E7600067192 /* Recipe+CoreDataProperties.swift in Sources */,
 				88525DF224A5571600067192 /* SceneDelegate.swift in Sources */,
+				889E694424D9EA8000A50B53 /* LoginViewController.swift in Sources */,
 				88525E0B24A5974100067192 /* SettingViewController.swift in Sources */,
 				88525E0724A58D0600067192 /* ConverterViewController.swift in Sources */,
 				88525E1024A59E7600067192 /* Recipe+CoreDataClass.swift in Sources */,

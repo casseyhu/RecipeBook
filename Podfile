@@ -6,6 +6,9 @@ target 'RecipeBook' do
   use_frameworks!
 
   # Pods for RecipeBook
+  pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'FirebaseUI/Auth'
+  pod 'Firebase/Firestore'
 end

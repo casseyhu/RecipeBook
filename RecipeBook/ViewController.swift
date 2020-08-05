@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let ref = Database.database().reference()
-        ref.child("user/username").setValue("CASSEY")
+        ref.childByAutoId().setValue(["username":"test", "password":"testpass", "role":"customer"])
+//        ref.child("user/username").setValue("CASSEY")
         
         tableView.delegate = self
         tableView.dataSource = self
