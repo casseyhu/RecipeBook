@@ -52,11 +52,14 @@ class SignUpViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: pass) { (result, error) in
             if error == nil {
                 let db = Firestore.firestore()
-                db.collection("users").addDocument(data: ["firstname":fname, "lastname":lname, "uid":result!.user.uid]) { (error) in
+                let uid = result!.user.uid
+                db.collection("users").document(uid).setData(["fname":fname, "lname":lname]) { (error) in
                     if error != nil {
                         self.errorlabel.text = "Error Saving User"
                     }
                 }
+                let settings = UserDefaults.standard
+                settings.set(uid, forKey: "uid")
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
                 self.view.window?.rootViewController = vc
                 self.view.window?.makeKeyAndVisible()

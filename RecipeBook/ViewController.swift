@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import FirebaseDatabase
+import FirebaseFirestore
 
 /**
     Recipe tab ViewController.
@@ -19,30 +19,57 @@ class ViewController: UIViewController {
     
     var recipes = [Recipe]()
     let context = PersistenceService.persistentContainer.viewContext
+    var uid:String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ref = Database.database().reference()
-        ref.childByAutoId().setValue(["username":"test", "password":"testpass", "role":"customer"])
-//        ref.child("user/username").setValue("CASSEY")
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
-
+        
         let settings = UserDefaults.standard
         settings.set("name", forKey: "SortField")
         settings.set(true, forKey: "SortAscending")
+        uid = settings.string(forKey: "uid")!
+        loadFromFireStore()
         
-        loadDataFromDatabase()
-        tableView.reloadData()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         loadDataFromDatabase()
         tableView.reloadData()
     }
+    
+    func loadFromFireStore() {
+        let context = PersistenceService.context
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
+        do { try context.execute(DelAllReqVar) }
+        catch { print(error) }
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(uid).collection("recipes").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let data = document.data()
+                        let recipe = Recipe(context: PersistenceService.context)
+                        recipe.name = (data["name"] as! String)
+                        recipe.type = (data["type"] as! String)
+                        recipe.servings = (data["servings"] as! Int16)
+                        recipe.prep = (data["prep"] as! Int16)
+                        recipe.ingredients = (data["ingredients"] as! String)
+                        PersistenceService.saveContext()
+                        self.recipes.append(recipe)
+                        self.tableView.reloadData()
+                    }
+                }
+        }
+        
+    }
+
     
     // MARK: - Load recipes from database
     
@@ -122,9 +149,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let context = PersistenceService.context
+            let name = recipes[indexPath.row].name!
             context.delete(recipes[indexPath.row])
             do {
                 try context.save()
+                let db = Firestore.firestore()
+                let uid = UserDefaults.standard.string(forKey: "uid")!
+                db.collection("users").document(uid).collection("recipes").document(name).delete()
             } catch {
                 print("Error saving context")
             }

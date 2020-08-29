@@ -48,9 +48,11 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: uname, password: pass) { (result, error) in
             if error != nil {
-                self.errorlabel.text = "Could not login, please try again"
+                self.errorlabel.text = error!.localizedDescription
             }
             else {
+                let settings = UserDefaults.standard
+                settings.set(result!.user.uid, forKey: "uid")
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
                 self.view.window?.rootViewController = vc
                 self.view.window?.makeKeyAndVisible()

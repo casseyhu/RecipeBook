@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33D10AE8B6B55B20AB1C8E7D /* Pods_RecipeBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B1681D93EA28490EB686C0 /* Pods_RecipeBook.framework */; };
+		880DB8D624F9DBAF00FBBCAF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880DB8D524F9DBAF00FBBCAF /* StartViewController.swift */; };
 		8818999524AD8DEC0078362D /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818999424AD8DEB0078362D /* UIButtonExtensions.swift */; };
 		88525DF024A5571600067192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525DEF24A5571600067192 /* AppDelegate.swift */; };
 		88525DF224A5571600067192 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88525DF124A5571600067192 /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0ED8E584E809B9F256D5DE69 /* Pods-RecipeBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeBook.release.xcconfig"; path = "Target Support Files/Pods-RecipeBook/Pods-RecipeBook.release.xcconfig"; sourceTree = "<group>"; };
+		880DB8D524F9DBAF00FBBCAF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8818999424AD8DEB0078362D /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		88525DEC24A5571600067192 /* RecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88525DEF24A5571600067192 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				88525E0F24A59E7600067192 /* Recipe+CoreDataProperties.swift */,
 				88525DEF24A5571600067192 /* AppDelegate.swift */,
 				88525DF124A5571600067192 /* SceneDelegate.swift */,
+				880DB8D524F9DBAF00FBBCAF /* StartViewController.swift */,
 				889E693E24D9D6D200A50B53 /* TitleViewController.swift */,
 				889E694124D9E8A400A50B53 /* SignUpViewController.swift */,
 				889E694324D9EA8000A50B53 /* LoginViewController.swift */,
@@ -120,7 +123,6 @@
 				88525E0824A58D1500067192 /* AddViewController.swift */,
 				88525E0A24A5974100067192 /* SettingViewController.swift */,
 				88525E1424A8250100067192 /* RecipeItemViewController.swift */,
-				889E694024D9E86E00A50B53 /* View Controllers */,
 				88525E1224A68D4600067192 /* MainRecipeCell.swift */,
 				88525E0C24A59C2900067192 /* PersistenceService.swift */,
 				8818999424AD8DEB0078362D /* UIButtonExtensions.swift */,
@@ -132,13 +134,6 @@
 				88525DF824A5571600067192 /* RecipeBook.xcdatamodeld */,
 			);
 			path = RecipeBook;
-			sourceTree = "<group>";
-		};
-		889E694024D9E86E00A50B53 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +280,7 @@
 				88525DFA24A5571600067192 /* RecipeBook.xcdatamodeld in Sources */,
 				8818999524AD8DEC0078362D /* UIButtonExtensions.swift in Sources */,
 				889E694224D9E8A400A50B53 /* SignUpViewController.swift in Sources */,
+				880DB8D624F9DBAF00FBBCAF /* StartViewController.swift in Sources */,
 				88525E1124A59E7600067192 /* Recipe+CoreDataProperties.swift in Sources */,
 				88525DF224A5571600067192 /* SceneDelegate.swift in Sources */,
 				889E694424D9EA8000A50B53 /* LoginViewController.swift in Sources */,

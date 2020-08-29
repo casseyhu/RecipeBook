@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="TeK-Vs-b4X">
             <objects>
-                <viewController id="eDJ-ju-eWX" sceneMemberID="viewController">
+                <viewController id="eDJ-ju-eWX" customClass="StartViewController" customModule="RecipeBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="keR-tK-8LM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zWA-rV-YFH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2374" y="-599"/>
+            <point key="canvasLocation" x="-2375.36231884058" y="-599.33035714285711"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="8gy-ZQ-6AO">
@@ -270,7 +270,7 @@
         <!--My Recipes-->
         <scene sceneID="yeC-QM-Ug5">
             <objects>
-                <viewController id="q6G-j6-cfL" customClass="ViewController" customModule="RecipeBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FViewController" id="q6G-j6-cfL" customClass="ViewController" customModule="RecipeBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aMG-lQ-3MZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1105,7 +1105,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Oxp-EV-wo6"/>
+        <segue reference="42g-hY-cgU"/>
         <segue reference="Vic-K7-K6t"/>
     </inferredMetricsTieBreakers>
     <resources>

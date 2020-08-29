@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FirebaseFirestore
 
 /**
     Add Recipe ViewController: Controls the events that happen when the user presses the add (+) button in the Recipes tab.
@@ -219,6 +220,10 @@ class AddViewController: UIViewController {
             recipe.prep = prep
             recipe.ingredients = ingred
             PersistenceService.saveContext()
+            
+            let uid = UserDefaults.standard.string(forKey: "uid")!
+            let db = Firestore.firestore()
+            db.collection("users").document(uid).collection("recipes").document(name).setData(["name":name!, "type":type!, "servings":servings!, "prep":prep!, "ingredients":ingred])
         }
         let _ = navigationController?.popViewController(animated: true)
     }
