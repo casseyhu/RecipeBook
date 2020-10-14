@@ -1,10 +1,14 @@
-# A Sleek and Simple Recipe Manager App for iOS devices
-### Created by Cassey Hu and Eddie Xu
+# Recipe Manager App for iOS devices
 
-Device Used: iPhone 11
+Device Used in Development: iPhone 11
+
+## Technologies
+Built With:
+* Swift
 
 ### Introduction
-Bring your beloved food constructs and kitchen creativity wherever you go with the Recipe Book: a sleek and simple iOS application that helps manage your very own recipes. The app is a frictionless way to save your recipes to your device without the constraints of a physical book-keep. With it’s elegant design comes many quality-of-life features such as recipe conversions to different servings, ease of recipe editing, and the ability to sort through your recipes in a quick and efficient manner. The Recipe Book will catalyze your time spent preparing for your everyday cravings and allow you to enjoy your creations sooner. 
+Bring your beloved food constructs and kitchen creativity wherever you go with the Recipe Book App: a sleek and simple iOS application that helps manage your very own recipes. The app is a frictionless way to save your recipes to your device without the constraints of a physical book-keep. With it’s elegant design comes many quality-of-life features such as recipe conversions to different servings, ease of recipe editing, and the ability to sort through your recipes in a quick and efficient manner. The Recipe Book will catalyze your time spent preparing for your everyday cravings and allow you to enjoy your creations sooner. 
+
 
 ### Recipe Tab
 Displays all the recipes created by the current user with the option to add and delete recipes. Each recipe cell displays the basic information for the recipe: recipe name, serving size, prep time, and an image representing the recipe category. When the user taps on a recipe, they will be directed to the recipe view screen. Likewise, when the user taps on the add (+) button, they will be directed to the add recipe screen.
@@ -41,5 +45,11 @@ Displays all the information about a recipe including the ingredients list. User
 <img src="images/recipe_view.png" height=500 hspace="20">   <img src="images/recipe_edit.png" height=500 hspace="20">   <img src="images/recipe_convert.png" height=500 hspace="20">
 </p>
 
+### New Features Added
+* User Sign Up and Login to save user specific data (through Firebase)
+
 ### Future Prospects
-To take things further, we are planning on implementing an external database and provide features like searching for other users of the app by their username and follow them and their own posted recipes. This can also be accomplished with some special functionality of locating users based on their location, say zip code, and allow them a choice of making their own cookbooks publicly available. 
+* Implement search feature where users can search for other users by username or search for recipes by name
+* Allow users to follow other users and save specific recipes
+* Allow users to make their recipe books public or private for sharing
+
